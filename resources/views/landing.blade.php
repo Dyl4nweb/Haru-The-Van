@@ -8,10 +8,10 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
-    <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : '1' }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}?v={{ file_exists(public_path('images/favicon-32x32.png')) ? filemtime(public_path('images/favicon-32x32.png')) : '1' }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}?v={{ file_exists(public_path('images/favicon-16x16.png')) ? filemtime(public_path('images/favicon-16x16.png')) : '1' }}">
+    <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('images/apple-touch-icon.png') }}?v={{ file_exists(public_path('images/apple-touch-icon.png')) ? filemtime(public_path('images/apple-touch-icon.png')) : '1' }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -30,9 +30,9 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <a href="{{ route('landing') }}" class="flex items-center gap-2.5 group">
                 <img 
-                    src="{{ asset('images/logo.png') }}" 
+                    src="{{ asset('images/logo.png') }}?v={{ file_exists(public_path('images/logo.png')) ? filemtime(public_path('images/logo.png')) : '1' }}" 
                     alt="Haru The Friendly Van Logo" 
-                    class="w-11 h-11 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition shrink-0 drop-shadow-sm"
+                    class="w-11 h-11 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition shrink-0"
                 >
                 <div>
                     <span class="block font-extrabold text-base sm:text-lg leading-tight text-stone-900 group-hover:text-emerald-700 transition">Haru The Friendly Van</span>
@@ -78,21 +78,12 @@
                 @endif
 
                 <div class="text-center max-w-3xl mx-auto">
-                    {{-- Unified Brand Crest Badge --}}
-                    <div class="inline-flex items-center gap-3 sm:gap-3.5 p-1.5 sm:p-2 pr-4 sm:pr-5 rounded-full bg-white border border-stone-200/90 shadow-sm hover:shadow-md transition mb-5 sm:mb-6 group">
-                        <img 
-                            src="{{ asset('images/logo.png') }}" 
-                            alt="Haru The Friendly Van Official Logo" 
-                            class="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 drop-shadow-sm group-hover:scale-105 transition"
-                        >
-                        <div class="text-left leading-tight">
-                            <div class="flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-700">Official Unit • Owner-Operated</span>
-                            </div>
-                            <span class="block font-extrabold text-xs sm:text-sm text-stone-900 mt-0.5">Haru The Friendly Van</span>
-                        </div>
-                    </div>
+                    {{-- Standalone Transparent Logo (No container, No background) --}}
+                    <img 
+                        src="{{ asset('images/logo.png') }}?v={{ file_exists(public_path('images/logo.png')) ? filemtime(public_path('images/logo.png')) : '1' }}" 
+                        alt="Haru The Friendly Van" 
+                        class="w-28 h-28 sm:w-36 sm:h-36 mx-auto object-contain mb-5 hover:scale-105 transition"
+                    >
 
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-stone-900 leading-tight">
                         {{ $van['headline'] }}
@@ -118,19 +109,9 @@
                     </div>
                 </div>
 
-                {{-- Van Photo Visual (Hero Showcase) --}}
+                {{-- Van Photo Visual (Hero Showcase - Clean with no container overlay) --}}
                 <div class="mt-8 sm:mt-12 max-w-5xl mx-auto">
-                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/15 border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-200 group">
-                        
-                        {{-- Official Emblem Crest on Van Photo --}}
-                        <div class="absolute top-3 left-3 sm:top-5 sm:left-5 z-20 flex items-center gap-2 sm:gap-3 bg-stone-950/80 backdrop-blur-md text-white px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-2xl shadow-xl border border-white/20">
-                            <img src="{{ asset('images/logo.png') }}" alt="Haru The Friendly Van Official Emblem" class="w-9 h-9 sm:w-12 sm:h-12 object-contain drop-shadow">
-                            <div class="text-left">
-                                <span class="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-400">Team Aro Evolution 200</span>
-                                <span class="block text-xs sm:text-sm font-extrabold text-white leading-tight">Haru The Friendly Van</span>
-                            </div>
-                        </div>
-
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/15 border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-200">
                         <img 
                             src="{{ asset('images/haru-van.jpg') }}" 
                             alt="Haru The Friendly Van ready for road trips" 
@@ -714,11 +695,11 @@
     {{-- Minimal Footer --}}
     <footer class="bg-stone-100 border-t border-stone-200 py-8 text-center text-xs text-stone-500">
         <div class="max-w-5xl mx-auto px-4">
-            <div class="inline-flex justify-center mb-3">
+            <div class="mb-3">
                 <img 
-                    src="{{ asset('images/logo.png') }}" 
+                    src="{{ asset('images/logo.png') }}?v={{ file_exists(public_path('images/logo.png')) ? filemtime(public_path('images/logo.png')) : '1' }}" 
                     alt="Haru The Friendly Van Official Logo" 
-                    class="w-16 h-16 object-contain hover:scale-105 transition drop-shadow-sm"
+                    class="w-16 h-16 object-contain mx-auto hover:scale-105 transition"
                 >
             </div>
             <p class="font-bold text-stone-800 text-sm">Haru The Friendly Van</p>
