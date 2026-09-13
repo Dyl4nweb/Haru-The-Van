@@ -62,6 +62,40 @@ class VanRentalController extends Controller
                     'detail' => 'Fits suitcases, bags & coolers',
                 ],
             ],
+            'trip_proofs' => [
+                [
+                    'id' => 1,
+                    'destination' => 'Baguio City & Benguet',
+                    'tag' => 'Family Vacation',
+                    'title' => 'Baguio Mountain Family Trip',
+                    'caption' => 'Comfortable long climb to Baguio with full family luggage and reliable dual air conditioning.',
+                    'image' => 'images/clients/trip-1.jpg',
+                ],
+                [
+                    'id' => 2,
+                    'destination' => 'Batangas Beach Resort',
+                    'tag' => 'Barkada Getaway',
+                    'title' => 'Weekend Beach Roadtrip',
+                    'caption' => 'Spacious seating for 12 passengers plus bags, food coolers, and beach equipment.',
+                    'image' => 'images/clients/trip-2.jpg',
+                ],
+                [
+                    'id' => 3,
+                    'destination' => 'NAIA Terminals & Hotels',
+                    'tag' => 'Airport Transfer',
+                    'title' => 'Balikbayan Airport Pickup',
+                    'caption' => 'On-time pickup with generous rear trunk space for heavy balikbayan boxes and suitcases.',
+                    'image' => 'images/clients/trip-3.jpg',
+                ],
+                [
+                    'id' => 4,
+                    'destination' => 'Tagaytay Ridge & Laguna',
+                    'tag' => 'Day Tour & Sightseeing',
+                    'title' => 'Tagaytay Sightseeing Tour',
+                    'caption' => 'Safe, relaxed driving by Charls for a hassle-free day tour and family gathering.',
+                    'image' => 'images/clients/trip-4.jpg',
+                ],
+            ],
         ];
 
         return view('landing', compact('van'));

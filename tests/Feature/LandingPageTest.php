@@ -24,6 +24,9 @@ class LandingPageTest extends TestCase
         $response->assertSee('Charls Pandio');
         $response->assertSee('Trip Inquiry Form');
         $response->assertSee('Submit Trip Inquiry (No Login Needed)');
+        $response->assertSee('Travel Memories with Haru & Charls', false);
+        $response->assertSee('Client Proof & Trip Highlights', false);
+        $response->assertSee('Baguio Mountain Family Trip');
         $response->assertSee('tel:+639175558291');
         $response->assertSee('btn-copy-phone');
         $response->assertSee('copyPhoneNumber');
