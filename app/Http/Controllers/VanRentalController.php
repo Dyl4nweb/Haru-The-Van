@@ -27,7 +27,7 @@ class VanRentalController extends Controller
             'availability' => 'Available 7 days a week (Advance booking recommended)',
             'location' => 'Metro Manila & Rizal (Servicing all points in Luzon)',
             'owner' => [
-                'name' => 'Charls Pandio',
+                'name' => 'Charls Pandeo',
                 'role' => 'Owner & Driver',
                 'phone' => '+63 917 555 8291',
                 'phone_display' => '0917-555-8291',

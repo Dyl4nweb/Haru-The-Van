@@ -212,7 +212,7 @@
                     <div class="relative shrink-0">
                         <img 
                             src="{{ asset('images/charls-driver.jpg') }}" 
-                            alt="Charls Pandio - Owner and Driver of Haru The Friendly Van" 
+                            alt="Charls Pandeo - Owner and Driver of Haru The Friendly Van" 
                             class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl sm:rounded-3xl object-cover shadow-md border-4 border-white ring-1 ring-stone-200"
                         />
                         <div class="absolute -bottom-2 inset-x-0 mx-auto w-max bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm flex items-center gap-1 border border-white">
@@ -224,10 +224,10 @@
                     <div class="text-center md:text-left">
                         <span class="text-xs uppercase tracking-wider text-emerald-700 font-bold">About Our Service</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">
-                            Meet Charls Pandio
+                            Meet Charls Pandeo
                         </h2>
                         <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-                            Hello! I am Charls Pandio, the owner and dedicated driver of <strong>Haru The Friendly Van</strong>. Because I manage and drive only one vehicle, my complete focus is on giving you a reliable, safe, and stress-free trip.
+                            Hello! I am Charls Pandeo, the owner and dedicated driver of <strong>Haru The Friendly Van</strong>. Because I manage and drive only one vehicle, my complete focus is on giving you a reliable, safe, and stress-free trip.
                         </p>
                         <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
                             Unlike big rental services where you deal with changing agents or unknown drivers, you communicate directly with me. I personally inspect the van before every departure, keep the cabin clean and cool, and guarantee calm, defensive driving for you and your companions.
