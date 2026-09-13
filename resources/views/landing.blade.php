@@ -426,10 +426,10 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-start">
                     
                     {{-- Contact Information Box --}}
-                    <div class="md:col-span-5 bg-stone-50 rounded-2xl p-6 sm:p-7 border border-stone-200">
+                    <div class="md:col-span-5 bg-stone-50 rounded-2xl p-4 sm:p-6 lg:p-7 border border-stone-200 w-full min-w-0">
                         <h3 class="text-lg font-bold text-stone-900">Direct Contact</h3>
                         <p class="text-xs text-stone-500 mt-1">Fastest response via direct call or Messenger.</p>
 
@@ -535,49 +535,51 @@
                     </div>
 
                     {{-- Interactive Inquiry & Live Trip Preview --}}
-                    <div id="inquiry" class="md:col-span-7 bg-white rounded-2xl p-6 sm:p-7 border border-stone-200 shadow-sm">
-                        <div class="flex items-center justify-between gap-2">
+                    <div id="inquiry" class="md:col-span-7 bg-white rounded-2xl p-4 sm:p-6 lg:p-7 border border-stone-200 shadow-sm w-full min-w-0">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-1">
                             <div>
-                                <h3 class="text-lg sm:text-xl font-bold text-stone-900">Trip Inquiry & Instant Chat</h3>
-                                <p class="text-xs text-stone-500 mt-0.5">Select your destination and trip details to generate an instant quote inquiry for Charls.</p>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <h3 class="text-lg sm:text-xl font-bold text-stone-900 leading-snug">Trip Inquiry & Instant Chat</h3>
+                                    <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 shrink-0">
+                                        ⚡ Direct with Charls
+                                    </span>
+                                </div>
+                                <p class="text-xs text-stone-500 mt-1">Select your destination and trip details to generate an instant quote inquiry for Charls.</p>
                             </div>
-                            <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-                                ⚡ Direct with Charls
-                            </span>
                         </div>
 
-                        <div id="inquiry-form-container" class="mt-5 space-y-4">
+                        <div id="inquiry-form-container" class="mt-4 sm:mt-5 space-y-4">
                             {{-- 1. Destination Quick-Select Chips --}}
                             <div>
                                 <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
                                     1. Choose Destination <span class="text-stone-400 font-normal normal-case">(Tap to select)</span>
                                 </label>
-                                <div class="flex flex-wrap gap-2" id="destination-chips">
-                                    <button type="button" data-type="destination" data-value="Baguio City" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                <div class="flex flex-wrap gap-1.5 sm:gap-2" id="destination-chips">
+                                    <button type="button" data-type="destination" data-value="Baguio City" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🏔️</span><span>Baguio City</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="Tagaytay / Cavite" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="Tagaytay / Cavite" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🌋</span><span>Tagaytay</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="Batangas Beaches" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="Batangas Beaches" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🏖️</span><span>Batangas Beach</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="NAIA / Airport Transfer" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="NAIA / Airport Transfer" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>✈️</span><span>Airport (NAIA)</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="La Union (San Juan)" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="La Union (San Juan)" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🌊</span><span>La Union (Elyu)</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="Baler, Aurora" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="Baler, Aurora" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🏄</span><span>Baler</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="Pangasinan / Alaminos" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="Pangasinan / Alaminos" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🏝️</span><span>Pangasinan</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="Metro Manila Tour" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="Metro Manila Tour" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>🏙️</span><span>Metro Manila Tour</span>
                                     </button>
-                                    <button type="button" data-type="destination" data-value="Other" id="chip-dest-other" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                    <button type="button" data-type="destination" data-value="Other" id="chip-dest-other" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
                                         <span>✏️</span><span>Other Destination</span>
                                     </button>
                                 </div>
@@ -594,12 +596,12 @@
                             </div>
 
                             {{-- 2. Trip Type & Passenger Count Chips --}}
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 <div>
                                     <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
                                         2. Trip Type
                                     </label>
-                                    <div class="flex flex-wrap gap-2" id="triptype-chips">
+                                    <div class="flex flex-wrap gap-1.5 sm:gap-2" id="triptype-chips">
                                         <button type="button" data-type="triptype" data-value="Day Tour (Balikan)" class="chip-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
                                             Day Tour (Balikan)
                                         </button>
@@ -619,7 +621,7 @@
                                     <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
                                         3. Estimated Group Size
                                     </label>
-                                    <div class="flex flex-wrap gap-2" id="pax-chips">
+                                    <div class="flex flex-wrap gap-1.5 sm:gap-2" id="pax-chips">
                                         <button type="button" data-type="pax" data-value="1 – 6 Pax" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
                                             1 – 6 Pax
                                         </button>
@@ -635,7 +637,7 @@
 
                             {{-- 4. Travel Date & Pickup Details --}}
                             <div class="pt-2 border-t border-stone-100">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
                                         <label for="rental_date" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
                                             Rental / Travel Date
@@ -662,7 +664,7 @@
                                     </div>
                                 </div>
 
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3.5">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-3.5">
                                     <div>
                                         <label for="name" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
                                             Your Name <span class="text-stone-400 font-normal">(Optional)</span>
@@ -691,8 +693,8 @@
                             </div>
 
                             {{-- Live Trip Overview Preview Card --}}
-                            <div id="selection-summary" class="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 space-y-1.5">
-                                <div class="flex items-center justify-between pb-1 border-b border-stone-200/70">
+                            <div id="selection-summary" class="p-3 sm:p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 space-y-1.5">
+                                <div class="flex flex-wrap items-center justify-between gap-1 pb-1 border-b border-stone-200/70">
                                     <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
                                         <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                         Trip Inquiry Overview
@@ -701,7 +703,7 @@
                                         Toyota HiAce (Haru)
                                     </span>
                                 </div>
-                                <div class="text-xs grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-4 pt-0.5">
+                                <div class="text-xs grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 gap-x-4 pt-0.5">
                                     <div>
                                         <span class="text-stone-400">Destination:</span> 
                                         <span id="preview-dest" class="font-bold text-stone-900">Baguio City</span>
@@ -728,10 +730,10 @@
                                     type="button" 
                                     id="btn-chat-messenger"
                                     onclick="chatOnMessenger()"
-                                    class="w-full py-3.5 px-5 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/20 flex items-center justify-center gap-2.5 transition cursor-pointer"
+                                    class="w-full py-3.5 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 sm:gap-2.5 transition cursor-pointer"
                                 >
                                     <svg class="w-5 h-5 shrink-0 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
-                                    <span>Chat with Charls on Facebook Messenger</span>
+                                    <span class="text-center leading-tight">Chat with Charls on Facebook Messenger</span>
                                 </button>
 
                                 {{-- Secondary Action: Direct Gmail / Email Inquiry --}}
@@ -739,29 +741,32 @@
                                     type="button" 
                                     id="btn-inquire-gmail"
                                     onclick="inquireViaGmail()"
-                                    class="w-full py-3 px-5 rounded-xl font-bold text-sm text-stone-800 bg-stone-50 hover:bg-stone-100 border border-stone-300 active:scale-[0.99] flex items-center justify-center gap-2.5 transition cursor-pointer"
+                                    class="w-full py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm text-stone-800 bg-stone-50 hover:bg-stone-100 border border-stone-300 active:scale-[0.99] flex items-center justify-center gap-2 transition cursor-pointer"
                                 >
                                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.545l8.073-6.052C21.69 2.28 24 3.434 24 5.457z"/></svg>
-                                    <span>Inquire via Gmail ({{ $van['owner']['email'] }})</span>
+                                    <span class="text-center leading-tight flex flex-wrap items-center justify-center gap-1">
+                                        <span>Inquire via Gmail</span>
+                                        <span class="text-[11px] sm:text-xs font-medium text-stone-500">({{ $van['owner']['email'] }})</span>
+                                    </span>
                                 </button>
 
                                 {{-- Fast Mobile Alternatives: SMS Text & Phone Call --}}
-                                <div class="grid grid-cols-2 gap-2 pt-1">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                                     <button 
                                         type="button" 
                                         id="btn-inquire-sms"
                                         onclick="inquireViaSms()"
-                                        class="py-2.5 px-3 rounded-xl font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition cursor-pointer"
+                                        class="py-2.5 px-3 rounded-xl font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition cursor-pointer w-full"
                                     >
-                                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                                        <svg class="w-3.5 h-3.5 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                                         <span>Send via SMS / Text</span>
                                     </button>
                                     <a 
                                         href="tel:{{ $van['owner']['phone_tel'] }}"
-                                        class="py-2.5 px-3 rounded-xl font-semibold text-xs text-stone-700 bg-white hover:bg-stone-50 border border-stone-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition text-center"
+                                        class="py-2.5 px-3 rounded-xl font-semibold text-xs text-stone-700 bg-white hover:bg-stone-50 border border-stone-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition text-center w-full"
                                     >
-                                        <svg class="w-3.5 h-3.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                        <span>Direct Call: {{ $van['owner']['phone_display'] }}</span>
+                                        <svg class="w-3.5 h-3.5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                        <span class="truncate">Direct Call: {{ $van['owner']['phone_display'] }}</span>
                                     </a>
                                 </div>
                             </div>
@@ -773,16 +778,16 @@
 
                         {{-- Messenger Feedback Alert Modal/Toast --}}
                         <div id="messenger-modal" class="hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-                            <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl border border-stone-200 animate-in fade-in zoom-in duration-200">
-                                <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <svg class="w-8 h-8 text-blue-600 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                            <div class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 text-center shadow-2xl border border-stone-200 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
                                 </div>
-                                <h4 class="text-lg font-bold text-stone-900">Trip Details Copied to Clipboard!</h4>
+                                <h4 class="text-base sm:text-lg font-bold text-stone-900">Trip Details Copied to Clipboard!</h4>
                                 <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">
                                     Your complete trip details are copied. Opening Facebook Messenger so you can paste and chat with Charls directly!
                                 </p>
 
-                                <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line" id="preview-text"></div>
+                                <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line break-words max-h-40 overflow-y-auto" id="preview-text"></div>
 
                                 <div class="mt-5 flex flex-col gap-2">
                                     <a 
