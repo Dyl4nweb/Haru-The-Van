@@ -14,13 +14,13 @@ class VanRentalController extends Controller
         $van = [
             'name' => 'Haru The Friendly Van',
             'headline' => 'Comfortable and reliable van for your trips.',
-            'subheadline' => 'Safe, comfortable, and affordable passenger van rental with a trusted, friendly driver. Ideal for family vacations, airport transfers, barkada getaways, and out-of-town adventures.',
+            'subheadline' => 'Comfortable and affordable private van rental with trusted driver, Charls. Clean dual AC, spacious seating, and reliable service across Luzon.',
             'model' => 'Toyota HiAce Commuter / Grandia',
             'capacity' => 'Up to 12 - 14 Passengers',
             'ac' => 'Dual Front & Rear Air Conditioning',
-            'description' => 'A well-maintained, clean, and smoke-free 14-seater van designed for comfortable long-distance travel across Luzon. Equipped with ice-cold dual air conditioning, reclining seats, generous luggage space, and regular safety inspections.',
-            'service_type' => 'With Professional Driver (No self-drive)',
-            'availability' => 'Available 7 days a week (Advance booking recommended)',
+            'description' => 'Clean, smoke-free 14-seater HiAce with cool dual aircon, reclining seats, and spacious luggage room for family and barkada trips.',
+            'service_type' => 'With Driver (No self-drive)',
+            'availability' => 'Available Daily (Book in advance)',
             'location' => 'Metro Manila & Rizal (Servicing all points in Luzon)',
             'owner' => [
                 'name' => 'Charls Pandeo',

@@ -147,7 +147,7 @@
                         Our Van Details
                     </h2>
                     <p class="text-stone-600 mt-2 text-sm sm:text-base leading-relaxed">
-                        We operate exclusively with our single, dedicated van. That means you always know exactly which vehicle will arrive at your doorstep—clean, inspected, and ready to roll.
+                        Our dedicated Toyota HiAce—always clean, air-conditioned, inspected, and ready for your trip.
                     </p>
                 </div>
 
@@ -191,7 +191,7 @@
                             </li>
                             <li class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                <span><strong>Destinations:</strong> Out-of-town trips, airport transfers, family events across Luzon</span>
+                                <span><strong>Destinations:</strong> Out-of-town trips, airport transfers, and family tours</span>
                             </li>
                         </ul>
                     </div>
@@ -199,10 +199,10 @@
                     <div class="w-full md:w-auto shrink-0 bg-white p-5 rounded-xl border border-stone-200 text-center md:text-left">
                         <span class="text-xs font-bold text-stone-500 uppercase tracking-wide block">Trip Quotation</span>
                         <p class="text-sm text-stone-600 mt-1 max-w-xs">
-                            Rates depend on your destination, fuel, and trip duration. Contact us for an instant, transparent quote with no surprise fees.
+                            Transparent rates based on destination and duration—zero hidden fees.
                         </p>
                         <a href="#inquiry" class="mt-4 inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-emerald-800 bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 transition">
-                            Request Quote
+                            Get Quote
                         </a>
                     </div>
                 </div>
@@ -240,7 +240,7 @@
                                 </div>
                             </div>
                             <p class="text-xs text-stone-500 text-center mt-3 font-medium">
-                                Personalized service — Charls personally drives and inspects Haru on every trip.
+                                Dedicated driver — Charls personally drives every trip.
                             </p>
                         </div>
                         
@@ -257,15 +257,15 @@
                                 Meet Charls Pandeo
                             </h2>
                             <p class="text-emerald-700 font-medium text-sm mt-1">
-                                The trusted person behind the wheel of Haru The Friendly Van
+                                Your trusted driver for family vacations & road trips
                             </p>
 
-                            <div class="mt-4 space-y-3 text-stone-600 text-sm sm:text-base leading-relaxed">
+                            <div class="mt-4 space-y-2.5 text-stone-600 text-sm sm:text-base leading-relaxed">
                                 <p>
-                                    Hello! I am <strong>Charls Pandeo</strong>, the owner and dedicated driver of <strong>Haru The Friendly Van</strong>. Because I manage and drive only one vehicle, my complete focus is on giving you and your family a reliable, safe, and stress-free travel experience.
+                                    Hi! I'm <strong>Charls Pandeo</strong>, owner and dedicated driver of <strong>Haru The Friendly Van</strong>. You deal directly with me—no middlemen or changing drivers.
                                 </p>
                                 <p>
-                                    Unlike large commercial rental services where you deal with changing agents or unknown third-party drivers, you communicate directly with me from your very first message until drop-off. I personally inspect the van before every departure, keep the cabin fresh and cool, and guarantee calm, defensive driving on every Luzon road.
+                                    I ensure on-time pickups, smooth defensive driving, and a clean, cool air-conditioned cabin so your group can relax and enjoy the ride.
                                 </p>
                             </div>
 
@@ -277,7 +277,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs font-bold text-stone-800">Punctual Pickups</p>
-                                        <p class="text-[11px] text-stone-500">Always on time for airport transfers & tours</p>
+                                        <p class="text-[11px] text-stone-500">Always on time for your schedule</p>
                                     </div>
                                 </div>
 
@@ -286,8 +286,8 @@
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                     </div>
                                     <div>
-                                        <p class="text-xs font-bold text-stone-800">Safe Defensive Driving</p>
-                                        <p class="text-[11px] text-stone-500">Careful driving through mountain passes & highways</p>
+                                        <p class="text-xs font-bold text-stone-800">Defensive Driving</p>
+                                        <p class="text-[11px] text-stone-500">Smooth & safe on all roads</p>
                                     </div>
                                 </div>
 
@@ -296,8 +296,8 @@
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                     </div>
                                     <div>
-                                        <p class="text-xs font-bold text-stone-800">Clean & Fresh Interior</p>
-                                        <p class="text-[11px] text-stone-500">Smoke-free, sanitized cabin with dual cold aircon</p>
+                                        <p class="text-xs font-bold text-stone-800">Clean & Fresh</p>
+                                        <p class="text-[11px] text-stone-500">Smoke-free with dual cold AC</p>
                                     </div>
                                 </div>
 
@@ -306,8 +306,8 @@
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                     </div>
                                     <div>
-                                        <p class="text-xs font-bold text-stone-800">Direct Communication</p>
-                                        <p class="text-[11px] text-stone-500">Talk directly to Charls without middle-men</p>
+                                        <p class="text-xs font-bold text-stone-800">Direct Contact</p>
+                                        <p class="text-[11px] text-stone-500">Talk directly with your driver</p>
                                     </div>
                                 </div>
                             </div>
@@ -315,12 +315,12 @@
                             {{-- Direct Action in About Card --}}
                             <div class="mt-6 pt-5 border-t border-stone-100 flex flex-wrap items-center justify-center lg:justify-start gap-3">
                                 <a href="#inquiry" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-95 shadow-sm transition">
-                                    <span>Plan Trip with Charls</span>
+                                    <span>Plan Trip</span>
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                 </a>
                                 <a href="tel:{{ $van['owner']['phone_tel'] }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-300 active:scale-95 transition">
                                     <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                    <span>Call {{ $van['owner']['phone_display'] }}</span>
+                                    <span>Call Charls</span>
                                 </a>
                             </div>
 
@@ -343,7 +343,7 @@
                         Travel Memories with Haru & Charls
                     </h2>
                     <p class="text-stone-600 text-sm sm:text-base mt-2 leading-relaxed">
-                        Real road trips, family holidays, barkada getaways, and safe airport transfers across Luzon.
+                        Family road trips, barkada getaways, and airport transfers across Luzon.
                     </p>
                 </div>
 
@@ -401,11 +401,11 @@
                 {{-- Quick CTA to book a trip --}}
                 <div class="mt-10 p-5 sm:p-6 rounded-2xl bg-emerald-800 text-emerald-50 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
                     <div>
-                        <p class="font-bold text-sm sm:text-base text-white">Planning your own family or barkada trip?</p>
-                        <p class="text-xs sm:text-sm text-emerald-200 mt-0.5">Let Charls take care of the driving with Haru The Friendly Van.</p>
+                        <p class="font-bold text-sm sm:text-base text-white">Planning your own trip?</p>
+                        <p class="text-xs sm:text-sm text-emerald-200 mt-0.5">Let Charls handle the driving so you can relax.</p>
                     </div>
                     <a href="#inquiry" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-white text-emerald-900 hover:bg-emerald-50 active:scale-95 transition shrink-0">
-                        <span>Book Your Schedule</span>
+                        <span>Book a Trip</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
@@ -422,7 +422,7 @@
                         Contact & Trip Inquiry
                     </h2>
                     <p class="text-stone-600 text-sm sm:text-base mt-2">
-                        Reach out directly via phone or message, or fill out the quick trip inquiry form below.
+                        Contact Charls directly or pick your trip details below.
                     </p>
                 </div>
 
@@ -431,7 +431,7 @@
                     {{-- Contact Information Box --}}
                     <div class="md:col-span-5 bg-stone-50 rounded-2xl p-4 sm:p-6 lg:p-7 border border-stone-200 w-full min-w-0">
                         <h3 class="text-lg font-bold text-stone-900">Direct Contact</h3>
-                        <p class="text-xs text-stone-500 mt-1">Fastest response via direct call or Messenger.</p>
+                        <p class="text-xs text-stone-500 mt-1">Direct call or Messenger for quick response.</p>
 
                         <div class="mt-6 space-y-4">
                             <div class="flex items-start gap-3">
@@ -470,7 +470,19 @@
                                             <span id="copy-phone-text">Copy</span>
                                         </button>
                                     </div>
-                                    <p class="text-[11px] text-stone-500 mt-1">Direct call opens dialer immediately on mobile</p>
+                                    <p class="text-[11px] text-stone-500 mt-1">Tap to call directly</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-stone-500 font-medium">Email</p>
+                                    <a href="mailto:{{ $van['owner']['email'] }}" class="text-sm font-bold text-emerald-700 hover:underline">
+                                        {{ $van['owner']['email'] }}
+                                    </a>
                                 </div>
                             </div>
 
@@ -525,7 +537,7 @@
                         <div class="mt-7 pt-6 border-t border-stone-200/80 flex flex-col sm:flex-row gap-3">
                             <a href="tel:{{ $van['owner']['phone_tel'] }}" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] shadow-sm transition">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                <span>Call Now (Direct)</span>
+                                <span>Call Now</span>
                             </a>
                             <a href="{{ $van['owner']['messages_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-stone-800 bg-white border border-stone-300 hover:bg-stone-50 active:scale-[0.98] transition">
                                 <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
@@ -544,7 +556,7 @@
                                         ⚡ Direct with Charls
                                     </span>
                                 </div>
-                                <p class="text-xs text-stone-500 mt-1">Select your destination and trip details to generate an instant quote inquiry for Charls.</p>
+                                <p class="text-xs text-stone-500 mt-1">Pick your destination and trip details for an instant quote.</p>
                             </div>
                         </div>
 
@@ -577,10 +589,10 @@
                                         <span>🏝️</span><span>Pangasinan</span>
                                     </button>
                                     <button type="button" data-type="destination" data-value="Metro Manila Tour" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
-                                        <span>🏙️</span><span>Metro Manila Tour</span>
+                                        <span>🏙️</span><span>Manila Tour</span>
                                     </button>
                                     <button type="button" data-type="destination" data-value="Other" id="chip-dest-other" class="chip-btn px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
-                                        <span>✏️</span><span>Other Destination</span>
+                                        <span>✏️</span><span>Other</span>
                                     </button>
                                 </div>
 
@@ -730,10 +742,10 @@
                                     type="button" 
                                     id="btn-chat-messenger"
                                     onclick="chatOnMessenger()"
-                                    class="w-full py-3.5 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 sm:gap-2.5 transition cursor-pointer"
+                                    class="w-full py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 sm:gap-2.5 transition cursor-pointer"
                                 >
                                     <svg class="w-5 h-5 shrink-0 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
-                                    <span class="text-center leading-tight">Chat with Charls on Facebook Messenger</span>
+                                    <span class="text-center leading-tight">Chat on Messenger</span>
                                 </button>
 
                                 {{-- Secondary Action: Direct Gmail / Email Inquiry --}}
@@ -741,13 +753,10 @@
                                     type="button" 
                                     id="btn-inquire-gmail"
                                     onclick="inquireViaGmail()"
-                                    class="w-full py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm text-stone-800 bg-stone-50 hover:bg-stone-100 border border-stone-300 active:scale-[0.99] flex items-center justify-center gap-2 transition cursor-pointer"
+                                    class="w-full py-2.5 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm text-stone-800 bg-stone-50 hover:bg-stone-100 border border-stone-300 active:scale-[0.99] flex items-center justify-center gap-2 transition cursor-pointer"
                                 >
                                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.545l8.073-6.052C21.69 2.28 24 3.434 24 5.457z"/></svg>
-                                    <span class="text-center leading-tight flex flex-wrap items-center justify-center gap-1">
-                                        <span>Inquire via Gmail</span>
-                                        <span class="text-[11px] sm:text-xs font-medium text-stone-500">({{ $van['owner']['email'] }})</span>
-                                    </span>
+                                    <span class="text-center leading-tight">Inquire via Gmail</span>
                                 </button>
 
                                 {{-- Fast Mobile Alternatives: SMS Text & Phone Call --}}
@@ -759,20 +768,20 @@
                                         class="py-2.5 px-3 rounded-xl font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition cursor-pointer w-full"
                                     >
                                         <svg class="w-3.5 h-3.5 shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                                        <span>Send via SMS / Text</span>
+                                        <span>Text via SMS</span>
                                     </button>
                                     <a 
                                         href="tel:{{ $van['owner']['phone_tel'] }}"
                                         class="py-2.5 px-3 rounded-xl font-semibold text-xs text-stone-700 bg-white hover:bg-stone-50 border border-stone-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition text-center w-full"
                                     >
                                         <svg class="w-3.5 h-3.5 shrink-0 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                        <span class="truncate">Direct Call: {{ $van['owner']['phone_display'] }}</span>
+                                        <span class="truncate">Call: {{ $van['owner']['phone_display'] }}</span>
                                     </a>
                                 </div>
                             </div>
 
                             <p class="text-center text-[11px] text-stone-500 pt-1">
-                                No registration or advance payment required. Connects you directly with Charls Pandeo for the best rates and quick confirmation.
+                                No prepayments or sign-ups. Connects directly with Charls for quick booking.
                             </p>
                         </div>
 
@@ -795,9 +804,9 @@
                                         href="{{ $van['owner']['messages_url'] }}" 
                                         target="_blank" 
                                         rel="noopener"
-                                        class="w-full py-3 px-4 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition flex items-center justify-center gap-2"
+                                        class="w-full py-2.5 px-4 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition flex items-center justify-center gap-2"
                                     >
-                                        <span>Open Messenger Chat</span>
+                                        <span>Open Messenger</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                     </a>
                                     <button 
@@ -874,7 +883,7 @@
         <div class="flex items-center gap-2">
             <a href="tel:{{ $van['owner']['phone_tel'] }}" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-700 text-white font-bold text-xs shadow-sm active:scale-95 transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                <span>Call Directly</span>
+                <span>Call Charls</span>
             </a>
             <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-sm active:scale-95 transition">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
