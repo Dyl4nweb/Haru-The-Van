@@ -34,6 +34,8 @@ class VanRentalController extends Controller
                 'facebook_name' => 'facebook.com/pandeo.charls',
                 'messenger_url' => 'https://m.me/pandeo.charls',
                 'facebook_url' => 'https://www.facebook.com/pandeo.charls/',
+                'tiktok_handle' => '@chatong61',
+                'tiktok_url' => 'https://www.tiktok.com/@chatong61',
                 'location' => 'Metro Manila & Rizal (Trips across Luzon)',
             ],
             'specs' => [

@@ -308,6 +308,18 @@
 
                             <div class="flex items-start gap-3">
                                 <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 00-1-.08A6.34 6.34 0 003 15.66a6.34 6.34 0 0010.86 4.46 6.13 6.13 0 001.92-4.46V8.71a8.31 8.31 0 004.81 1.52V6.78a4.85 4.85 0 01-1-.09z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-stone-500 font-medium">TikTok</p>
+                                    <a href="{{ $van['owner']['tiktok_url'] }}" target="_blank" rel="noopener" class="text-sm font-bold text-emerald-700 hover:underline">
+                                        {{ $van['owner']['tiktok_handle'] }}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                                 </div>
                                 <div>
@@ -483,7 +495,20 @@
         <div class="max-w-5xl mx-auto px-4">
             <p class="font-bold text-stone-800 text-sm">Haru The Friendly Van</p>
             <p class="mt-1">Comfortable and reliable single-van rental for your trips across Luzon.</p>
-            <p class="mt-3 text-stone-400">&copy; {{ date('Y') }} Haru The Friendly Van. All rights reserved.</p>
+            
+            <div class="mt-3 flex items-center justify-center gap-4 text-xs font-semibold text-stone-600">
+                <a href="{{ $van['owner']['facebook_url'] }}" target="_blank" rel="noopener" class="hover:text-emerald-700 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                    <span>Facebook / Messenger</span>
+                </a>
+                <span class="text-stone-300">•</span>
+                <a href="{{ $van['owner']['tiktok_url'] }}" target="_blank" rel="noopener" class="hover:text-emerald-700 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-stone-900" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 00-1-.08A6.34 6.34 0 003 15.66a6.34 6.34 0 0010.86 4.46 6.13 6.13 0 001.92-4.46V8.71a8.31 8.31 0 004.81 1.52V6.78a4.85 4.85 0 01-1-.09z"/></svg>
+                    <span>TikTok ({{ $van['owner']['tiktok_handle'] }})</span>
+                </a>
+            </div>
+
+            <p class="mt-4 text-stone-400">&copy; {{ date('Y') }} Haru The Friendly Van. All rights reserved.</p>
         </div>
     </footer>
 
