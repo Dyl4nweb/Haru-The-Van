@@ -31,6 +31,8 @@ class LandingPageTest extends TestCase
         $response->assertSee('btn-copy-phone');
         $response->assertSee('images/logo.png');
         $response->assertSee('Messenger');
+        $response->assertSee('@cha_tong');
+        $response->assertSee('https://www.instagram.com/cha_tong');
     }
 
     /**
