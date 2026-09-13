@@ -103,13 +103,13 @@
                     </div>
                 </div>
 
-                {{-- Van Photo Visual --}}
-                <div class="mt-8 sm:mt-12 max-w-4xl mx-auto">
-                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-stone-900/10 border-4 sm:border-8 border-white bg-stone-200">
+                {{-- Van Photo Visual (Hero Showcase) --}}
+                <div class="mt-8 sm:mt-12 max-w-5xl mx-auto">
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/15 border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-200">
                         <img 
                             src="{{ asset('images/haru-van.jpg') }}" 
                             alt="Haru The Friendly Van ready for road trips" 
-                            class="w-full h-auto object-cover max-h-[480px]"
+                            class="w-full h-auto object-cover max-h-[540px]"
                             loading="eager"
                             fetchpriority="high"
                         />
@@ -205,47 +205,107 @@
         </section>
 
         {{-- Section 3: About --}}
-        <section id="about" class="py-12 sm:py-16 bg-stone-50 border-b border-stone-200/80">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <section id="about" class="py-16 sm:py-24 bg-stone-50 border-b border-stone-200/80">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
                 
-                <div class="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-stone-200 shadow-sm flex flex-col md:flex-row gap-6 sm:gap-8 items-center">
-                    <div class="relative shrink-0">
-                        <img 
-                            src="{{ asset('images/charls-driver.jpg') }}" 
-                            alt="Charls Pandeo - Owner and Driver of Haru The Friendly Van" 
-                            class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl sm:rounded-3xl object-cover shadow-md border-4 border-white ring-1 ring-stone-200"
-                        />
-                        <div class="absolute -bottom-2 inset-x-0 mx-auto w-max bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm flex items-center gap-1 border border-white">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
-                            <span>Owner & Driver</span>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center md:text-left">
-                        <span class="text-xs uppercase tracking-wider text-emerald-700 font-bold">About Our Service</span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">
-                            Meet Charls Pandeo
-                        </h2>
-                        <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-                            Hello! I am Charls Pandeo, the owner and dedicated driver of <strong>Haru The Friendly Van</strong>. Because I manage and drive only one vehicle, my complete focus is on giving you a reliable, safe, and stress-free trip.
-                        </p>
-                        <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-                            Unlike big rental services where you deal with changing agents or unknown drivers, you communicate directly with me. I personally inspect the van before every departure, keep the cabin clean and cool, and guarantee calm, defensive driving for you and your companions.
-                        </p>
+                <div class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-stone-200 shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-center">
+                        
+                        {{-- Prominent Driver Portrait Column (Larger on Mobile & Desktop) --}}
+                        <div class="md:col-span-5 flex flex-col items-center">
+                            <div class="relative w-full max-w-[340px] sm:max-w-sm md:max-w-none aspect-square rounded-3xl overflow-hidden shadow-xl border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-100 group">
+                                <img 
+                                    src="{{ asset('images/charls-driver.jpg') }}" 
+                                    alt="Charls Pandeo - Owner and Driver of Haru The Friendly Van" 
+                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                                    loading="lazy"
+                                />
+                                
+                                {{-- Badges on Image --}}
+                                <div class="absolute top-3 left-3 bg-stone-900/80 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>Owner & Dedicated Driver</span>
+                                </div>
 
-                        <div class="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs sm:text-sm text-stone-700 font-medium">
-                            <span class="inline-flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                Punctual Pickups
+                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/80 via-stone-950/40 to-transparent p-4 text-white">
+                                    <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Your Driver</p>
+                                    <p class="text-lg font-bold">Charls Pandeo</p>
+                                    <p class="text-xs text-stone-300">Haru The Friendly Van</p>
+                                </div>
+                            </div>
+                            <p class="text-[11px] text-stone-500 text-center mt-3">
+                                Friendly, punctual, and safe road trip driver across Luzon
+                            </p>
+                        </div>
+                        
+                        {{-- Content Column --}}
+                        <div class="md:col-span-7 text-center md:text-left">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 mb-3">
+                                <svg class="w-3.5 h-3.5 text-emerald-700" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                </svg>
+                                Dedicated Single-Van Operator
                             </span>
-                            <span class="inline-flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                Defensive, Safe Driving
-                            </span>
-                            <span class="inline-flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                Courteous & Family-Friendly
-                            </span>
+
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 leading-tight">
+                                Meet Charls Pandeo
+                            </h2>
+                            <p class="text-emerald-700 font-medium text-sm mt-1">
+                                The trusted person behind the wheel of Haru The Friendly Van
+                            </p>
+
+                            <div class="mt-4 space-y-3 text-stone-600 text-sm sm:text-base leading-relaxed">
+                                <p>
+                                    Hello! I am <strong>Charls Pandeo</strong>, the owner and dedicated driver of <strong>Haru The Friendly Van</strong>. Because I manage and drive only one vehicle, my complete focus is on giving you and your family a reliable, safe, and stress-free travel experience.
+                                </p>
+                                <p>
+                                    Unlike large commercial rental services where you deal with changing agents or unknown third-party drivers, you communicate directly with me from your very first message until drop-off. I personally inspect the van before every departure, keep the cabin fresh and cool, and guarantee calm, defensive driving on every Luzon road.
+                                </p>
+                            </div>
+
+                            {{-- Service Guarantees / Highlights --}}
+                            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+                                <div class="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-start gap-2.5">
+                                    <div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-stone-800">Punctual Pickups</p>
+                                        <p class="text-[11px] text-stone-500">Always on time for airport transfers & tours</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-start gap-2.5">
+                                    <div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-stone-800">Safe Defensive Driving</p>
+                                        <p class="text-[11px] text-stone-500">Careful driving through mountain passes & highways</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-start gap-2.5">
+                                    <div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-stone-800">Clean & Fresh Interior</p>
+                                        <p class="text-[11px] text-stone-500">Smoke-free, sanitized cabin with dual cold aircon</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-stone-50 border border-stone-200 flex items-start gap-2.5">
+                                    <div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-stone-800">Direct Communication</p>
+                                        <p class="text-[11px] text-stone-500">Talk directly to Charls without middle-men</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
