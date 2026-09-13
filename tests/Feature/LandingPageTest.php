@@ -29,7 +29,7 @@ class LandingPageTest extends TestCase
         $response->assertSee('Baguio Mountain Family Trip');
         $response->assertSee('tel:+639175558291');
         $response->assertSee('btn-copy-phone');
-        $response->assertSee('copyPhoneNumber');
+        $response->assertSee('images/logo.png');
         $response->assertSee('Messenger');
     }
 

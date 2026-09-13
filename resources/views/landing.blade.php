@@ -8,6 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -24,12 +25,14 @@
     {{-- Minimal Navigation Header --}}
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-stone-200/80">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="{{ route('landing') }}" class="flex items-center gap-2 group">
-                <span class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-emerald-700 transition">
-                    H
-                </span>
+            <a href="{{ route('landing') }}" class="flex items-center gap-2.5 group">
+                <img 
+                    src="{{ asset('images/logo.png') }}" 
+                    alt="Haru The Friendly Van Logo" 
+                    class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-contain shadow-sm border border-stone-200 group-hover:scale-105 transition shrink-0 bg-stone-950"
+                >
                 <div>
-                    <span class="block font-bold text-base sm:text-lg leading-tight text-stone-900">Haru The Friendly Van</span>
+                    <span class="block font-extrabold text-base sm:text-lg leading-tight text-stone-900 group-hover:text-emerald-700 transition">Haru The Friendly Van</span>
                     <span class="block text-[11px] text-stone-500 font-medium">Single Van • Personalized Service</span>
                 </div>
             </a>
@@ -72,6 +75,14 @@
                 @endif
 
                 <div class="text-center max-w-3xl mx-auto">
+                    <div class="inline-flex justify-center mb-4">
+                        <img 
+                            src="{{ asset('images/logo.png') }}" 
+                            alt="Haru The Friendly Van Official Logo" 
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-xl border-2 border-white ring-2 ring-stone-900/10 object-contain hover:scale-105 transition bg-stone-950"
+                        >
+                    </div>
+
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 mb-4">
                         <svg class="w-3.5 h-3.5 text-emerald-700" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -677,6 +688,13 @@
     {{-- Minimal Footer --}}
     <footer class="bg-stone-100 border-t border-stone-200 py-8 text-center text-xs text-stone-500">
         <div class="max-w-5xl mx-auto px-4">
+            <div class="inline-flex justify-center mb-3">
+                <img 
+                    src="{{ asset('images/logo.png') }}" 
+                    alt="Haru The Friendly Van Official Logo" 
+                    class="w-16 h-16 rounded-full object-contain shadow-sm border border-stone-200 bg-stone-950 hover:scale-105 transition"
+                >
+            </div>
             <p class="font-bold text-stone-800 text-sm">Haru The Friendly Van</p>
             <p class="mt-1">Comfortable and reliable single-van rental for your trips across Luzon.</p>
             
