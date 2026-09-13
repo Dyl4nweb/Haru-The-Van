@@ -78,20 +78,21 @@
                 @endif
 
                 <div class="text-center max-w-3xl mx-auto">
-                    <div class="inline-flex justify-center mb-4">
+                    {{-- Unified Brand Crest Badge --}}
+                    <div class="inline-flex items-center gap-3 sm:gap-3.5 p-1.5 sm:p-2 pr-4 sm:pr-5 rounded-full bg-white border border-stone-200/90 shadow-sm hover:shadow-md transition mb-5 sm:mb-6 group">
                         <img 
                             src="{{ asset('images/logo.png') }}" 
                             alt="Haru The Friendly Van Official Logo" 
-                            class="w-24 h-24 sm:w-28 sm:h-28 object-contain hover:scale-105 transition drop-shadow-xl"
+                            class="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 drop-shadow-sm group-hover:scale-105 transition"
                         >
+                        <div class="text-left leading-tight">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-700">Official Unit • Owner-Operated</span>
+                            </div>
+                            <span class="block font-extrabold text-xs sm:text-sm text-stone-900 mt-0.5">Haru The Friendly Van</span>
+                        </div>
                     </div>
-
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 mb-4">
-                        <svg class="w-3.5 h-3.5 text-emerald-700" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Local Owner-Operated Van Service
-                    </span>
 
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-stone-900 leading-tight">
                         {{ $van['headline'] }}
@@ -119,7 +120,17 @@
 
                 {{-- Van Photo Visual (Hero Showcase) --}}
                 <div class="mt-8 sm:mt-12 max-w-5xl mx-auto">
-                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/15 border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-200">
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/15 border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-200 group">
+                        
+                        {{-- Official Emblem Crest on Van Photo --}}
+                        <div class="absolute top-3 left-3 sm:top-5 sm:left-5 z-20 flex items-center gap-2 sm:gap-3 bg-stone-950/80 backdrop-blur-md text-white px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-2xl shadow-xl border border-white/20">
+                            <img src="{{ asset('images/logo.png') }}" alt="Haru The Friendly Van Official Emblem" class="w-9 h-9 sm:w-12 sm:h-12 object-contain drop-shadow">
+                            <div class="text-left">
+                                <span class="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-400">Team Aro Evolution 200</span>
+                                <span class="block text-xs sm:text-sm font-extrabold text-white leading-tight">Haru The Friendly Van</span>
+                            </div>
+                        </div>
+
                         <img 
                             src="{{ asset('images/haru-van.jpg') }}" 
                             alt="Haru The Friendly Van ready for road trips" 
