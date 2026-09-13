@@ -27,7 +27,7 @@ class VanRentalController extends Controller
             'availability' => 'Available 7 days a week (Advance booking recommended)',
             'location' => 'Metro Manila & Rizal (Servicing all points in Luzon)',
             'owner' => [
-                'name' => 'Charls Pandeo (Kuya Haru)',
+                'name' => 'Charls Pandio',
                 'role' => 'Owner & Driver',
                 'phone' => '+63 917 555 8291',
                 'phone_display' => '0917-555-8291',
@@ -85,6 +85,6 @@ class VanRentalController extends Controller
         }
 
         return redirect()->to(url()->previous().'#inquiry')
-            ->with('success', 'Thank you! Your trip inquiry has been received. Kuya Haru will call or text you shortly to confirm your schedule and provide a direct quote.');
+            ->with('success', 'Thank you! Your trip inquiry has been received. Kuya Charls will call or text you shortly to confirm your schedule and provide a direct quote.');
     }
 }

@@ -209,16 +209,16 @@
                 
                 <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200 shadow-sm flex flex-col md:flex-row gap-6 sm:gap-8 items-center">
                     <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-emerald-100 border-4 border-emerald-50 text-emerald-800 flex items-center justify-center text-3xl font-extrabold shrink-0 shadow-inner">
-                        HR
+                        CP
                     </div>
                     
                     <div>
                         <span class="text-xs uppercase tracking-wider text-emerald-700 font-bold">About Our Business</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">
-                            Meet Kuya Haru
+                            Meet Kuya Charls
                         </h2>
                         <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-                            Hello! I am Haru Ramos, owner and dedicated driver of <strong>Haru The Friendly Van</strong>. As an independent single-van operator, I personally manage every booking, inspect every tire, and drive every trip with patient, safe, and family-first care.
+                            Hello! I am Charls Pandio, owner and dedicated driver of <strong>Haru The Friendly Van</strong>. As an independent single-van operator, I personally manage every booking, inspect every tire, and drive every trip with patient, safe, and family-first care.
                         </p>
                         <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
                             Unlike big rental platforms with unpredictable vehicles or hired drivers, you get direct communication with me. Whether you are traveling for a family holiday in the mountains, a beach trip with friends, or an early morning airport pickup, you can rest easy knowing you're in safe, courteous hands.
@@ -423,7 +423,7 @@
                             </div>
 
                             <p class="text-center text-[11px] text-stone-500">
-                                Walang paunang bayad para sa inquiry. I-co-confirm muna ni Kuya Haru ang availability ng van.
+                                Walang paunang bayad para sa inquiry. I-co-confirm muna ni Kuya Charls ang availability ng van.
                             </p>
                         </form>
 
@@ -435,7 +435,7 @@
                                 </div>
                                 <h4 class="text-lg font-bold text-stone-900">Nai-copy na ang iyong Inquiry!</h4>
                                 <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">
-                                    Naka-copy na sa iyong clipboard ang kumpletong detalye ng biyahe. I-paste mo na lang sa chat at i-send kay Kuya Haru sa Messenger!
+                                    Naka-copy na sa iyong clipboard ang kumpletong detalye ng biyahe. I-paste mo na lang sa chat at i-send kay Kuya Charls sa Messenger!
                                 </p>
 
                                 <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line" id="preview-text"></div>
@@ -511,7 +511,7 @@
             }
 
             const formattedMessage = [
-                'Kumusta Kuya Haru! Trip inquiry po para sa Haru The Friendly Van:',
+                'Kumusta Kuya Charls! Trip inquiry po para sa Haru The Friendly Van:',
                 '• Pangalan: ' + name,
                 '• Contact: ' + phone,
                 '• Petsa ng Biyahe: ' + rentalDate,
