@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inquiry;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class VanRentalController extends Controller
@@ -102,30 +98,5 @@ class VanRentalController extends Controller
         ];
 
         return view('landing', compact('van'));
-    }
-
-    /**
-     * Handle trip inquiry submission.
-     */
-    public function storeInquiry(Request $request): RedirectResponse|JsonResponse
-    {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:100'],
-            'phone' => ['required', 'string', 'max:30'],
-            'rental_date' => ['required', 'date', 'after_or_equal:today'],
-            'message' => ['nullable', 'string', 'max:1000'],
-        ]);
-
-        Inquiry::create($validated);
-
-        if ($request->expectsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Thank you! Your trip inquiry has been received.',
-            ]);
-        }
-
-        return redirect()->to(url()->previous().'#inquiry')
-            ->with('success', 'Thank you! Your trip inquiry has been received. Charls will call or text you shortly to confirm your schedule and provide a direct quote.');
     }
 }

@@ -1018,26 +1018,8 @@
             };
         }
 
-        function silentlySaveInquiry(data) {
-            fetch('{{ route('inquire.store') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: data.name || 'Website Visitor (Instant Inquiry)',
-                    phone: data.phone || 'Direct Chat/Email',
-                    rental_date: document.getElementById('rental_date')?.value || new Date().toISOString().split('T')[0],
-                    message: data.text
-                })
-            }).catch(() => {});
-        }
-
         function chatOnMessenger() {
             const data = getInquirySummary();
-            silentlySaveInquiry(data);
 
             // Copy formatted inquiry details to clipboard
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1061,7 +1043,6 @@
 
         function inquireViaGmail() {
             const data = getInquirySummary();
-            silentlySaveInquiry(data);
 
             const emailTo = '{{ $van['owner']['email'] ?? 'charlspandeo@gmail.com' }}';
             const subject = 'Van Rental Inquiry: ' + data.dest + ' (' + data.date + ') - Haru The Friendly Van';
@@ -1091,7 +1072,6 @@
 
         function inquireViaSms() {
             const data = getInquirySummary();
-            silentlySaveInquiry(data);
 
             const phone = '{{ $van['owner']['phone_tel'] }}';
             const smsBody = encodeURIComponent(data.text);
