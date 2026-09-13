@@ -33,6 +33,8 @@ class LandingPageTest extends TestCase
         $response->assertSee('Messenger');
         $response->assertSee('@cha_tong');
         $response->assertSee('https://www.instagram.com/cha_tong');
+        $response->assertSee('back-to-top-btn');
+        $response->assertSee('Back to Top');
     }
 
     /**
