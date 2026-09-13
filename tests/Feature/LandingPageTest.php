@@ -58,4 +58,29 @@ class LandingPageTest extends TestCase
 
         $response->assertSessionHasErrors(['name', 'phone', 'rental_date']);
     }
+
+    /**
+     * Test that inquiry submission via JSON / AJAX works for Messenger integration.
+     */
+    public function test_inquiry_form_submits_via_json_successfully(): void
+    {
+        $payload = [
+            'name' => 'Charls Client',
+            'phone' => '0918-999-0000',
+            'rental_date' => now()->addDays(5)->format('Y-m-d'),
+            'message' => 'Tagaytay weekend getaway',
+        ];
+
+        $response = $this->postJson('/inquire', $payload);
+
+        $response->assertOk();
+        $response->assertJson([
+            'success' => true,
+        ]);
+
+        $this->assertDatabaseHas('inquiries', [
+            'name' => 'Charls Client',
+            'phone' => '0918-999-0000',
+        ]);
+    }
 }

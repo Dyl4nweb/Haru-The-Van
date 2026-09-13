@@ -338,7 +338,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('inquire.store') }}" method="POST" class="mt-5 space-y-4">
+                        <form id="inquiry-form" action="{{ route('inquire.store') }}" method="POST" class="mt-5 space-y-4">
                             @csrf
 
                             <div>
@@ -397,21 +397,71 @@
                                     name="message" 
                                     id="message" 
                                     rows="3" 
-                                    placeholder="Destination (e.g. Baguio, Tagaytay), estimated passenger count, or special pickup notes..."
+                                    placeholder="Destination (e.g. Baguio, Tagaytay, Batangas), estimated passenger count, or special pickup notes..."
                                     class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
                                 >{{ old('message') }}</textarea>
                             </div>
 
-                            <button 
-                                type="submit" 
-                                class="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.99] shadow-md shadow-emerald-700/20 transition"
-                            >
-                                Send Trip Inquiry
-                            </button>
+                            {{-- Messenger Direct Send Button (Primary) --}}
+                            <div class="space-y-2 pt-1">
+                                <button 
+                                    type="button" 
+                                    id="btn-send-messenger"
+                                    onclick="sendViaMessenger()"
+                                    class="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/25 flex items-center justify-center gap-2 transition cursor-pointer"
+                                >
+                                    <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                                    <span>Ipadala Diretso sa Messenger</span>
+                                </button>
+
+                                <button 
+                                    type="submit" 
+                                    class="w-full py-2.5 px-4 rounded-xl font-semibold text-xs text-stone-600 bg-stone-100 hover:bg-stone-200 border border-stone-300 active:scale-[0.99] transition cursor-pointer"
+                                >
+                                    O i-submit lang sa website form (kung walang Messenger)
+                                </button>
+                            </div>
+
                             <p class="text-center text-[11px] text-stone-500">
-                                No advance payment required for inquiries. We will confirm date availability first.
+                                Walang paunang bayad para sa inquiry. I-co-confirm muna ni Kuya Haru ang availability ng van.
                             </p>
                         </form>
+
+                        {{-- Messenger Feedback Alert Modal/Toast --}}
+                        <div id="messenger-modal" class="hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+                            <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl border border-stone-200 animate-in fade-in zoom-in duration-200">
+                                <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-stone-900">Nai-copy na ang iyong Inquiry!</h4>
+                                <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">
+                                    Naka-copy na sa iyong clipboard ang kumpletong detalye ng biyahe. I-paste mo na lang sa chat at i-send kay Kuya Haru sa Messenger!
+                                </p>
+
+                                <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line" id="preview-text"></div>
+
+                                <div class="mt-5 flex flex-col gap-2">
+                                    <a 
+                                        id="modal-messenger-link" 
+                                        href="{{ $van['owner']['messenger_url'] }}" 
+                                        target="_blank" 
+                                        rel="noopener"
+                                        class="w-full py-3 px-4 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition flex items-center justify-center gap-2"
+                                    >
+                                        <span>Buksan ang Messenger Chat</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                    </a>
+                                    <button 
+                                        type="button" 
+                                        onclick="closeMessengerModal()" 
+                                        class="text-xs font-semibold text-stone-500 hover:text-stone-800 py-1"
+                                    >
+                                        Isara (Close)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -430,21 +480,78 @@
     </footer>
 
     {{-- Mobile Bottom Floating Sticky Action Bar --}}
-    <div class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-stone-200 p-2.5 sm:hidden shadow-lg">
+    <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 p-2.5 sm:hidden shadow-lg">
         <div class="flex items-center gap-2">
             <a href="tel:{{ $van['owner']['phone'] }}" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-700 text-white font-bold text-xs shadow-sm">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 <span>Call</span>
             </a>
-            <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-stone-100 text-stone-900 font-bold text-xs border border-stone-300">
-                <svg class="w-4 h-4 text-emerald-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
-                <span>Message</span>
+            <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-sm">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                <span>Messenger</span>
             </a>
             <a href="#inquiry" class="inline-flex items-center justify-center p-2.5 rounded-xl bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold" title="Inquiry Form">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             </a>
         </div>
     </div>
+
+    {{-- Minimal JavaScript for Messenger Auto-Send & Clipboard --}}
+    <script>
+        function sendViaMessenger() {
+            const form = document.getElementById('inquiry-form');
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const rentalDate = document.getElementById('rental_date').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !rentalDate) {
+                form.reportValidity();
+                return;
+            }
+
+            const formattedMessage = [
+                'Kumusta Kuya Haru! Trip inquiry po para sa Haru The Friendly Van:',
+                '• Pangalan: ' + name,
+                '• Contact: ' + phone,
+                '• Petsa ng Biyahe: ' + rentalDate,
+                '• Detalye / Destinasyon: ' + (message || 'Pag-uusapan sa chat')
+            ].join('\n');
+
+            // Save to database in the background so lead is never lost
+            fetch('{{ route('inquire.store') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    rental_date: rentalDate,
+                    message: message
+                })
+            }).catch(() => {});
+
+            // Copy to clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(formattedMessage).catch(() => {});
+            }
+
+            // Show feedback modal
+            document.getElementById('preview-text').textContent = formattedMessage;
+            document.getElementById('messenger-modal').classList.remove('hidden');
+
+            // Open Messenger directly
+            const messengerUrl = '{{ $van['owner']['messenger_url'] }}';
+            window.open(messengerUrl, '_blank');
+        }
+
+        function closeMessengerModal() {
+            document.getElementById('messenger-modal').classList.add('hidden');
+        }
+    </script>
 
 </body>
 </html>

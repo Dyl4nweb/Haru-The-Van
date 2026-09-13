@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inquiry;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -26,13 +27,13 @@ class VanRentalController extends Controller
             'availability' => 'Available 7 days a week (Advance booking recommended)',
             'location' => 'Metro Manila & Rizal (Servicing all points in Luzon)',
             'owner' => [
-                'name' => 'Haru Ramos',
+                'name' => 'Charls Pandeo (Kuya Haru)',
                 'role' => 'Owner & Driver',
                 'phone' => '+63 917 555 8291',
                 'phone_display' => '0917-555-8291',
-                'facebook_name' => 'Haru The Friendly Van',
-                'messenger_url' => 'https://m.me/HaruTheFriendlyVan',
-                'facebook_url' => 'https://facebook.com/HaruTheFriendlyVan',
+                'facebook_name' => 'facebook.com/pandeo.charls',
+                'messenger_url' => 'https://m.me/pandeo.charls',
+                'facebook_url' => 'https://www.facebook.com/pandeo.charls/',
                 'location' => 'Metro Manila & Rizal (Trips across Luzon)',
             ],
             'specs' => [
@@ -65,7 +66,7 @@ class VanRentalController extends Controller
     /**
      * Handle trip inquiry submission.
      */
-    public function storeInquiry(Request $request): RedirectResponse
+    public function storeInquiry(Request $request): RedirectResponse|JsonResponse
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
@@ -75,6 +76,13 @@ class VanRentalController extends Controller
         ]);
 
         Inquiry::create($validated);
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Salamat! Nai-record na ang iyong inquiry.',
+            ]);
+        }
 
         return redirect()->to(url()->previous().'#inquiry')
             ->with('success', 'Thank you! Your trip inquiry has been received. Kuya Haru will call or text you shortly to confirm your schedule and provide a direct quote.');
