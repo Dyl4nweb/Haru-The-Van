@@ -32,6 +32,7 @@ class VanRentalController extends Controller
                 'phone' => '+63 917 555 8291',
                 'phone_display' => '0917-555-8291',
                 'phone_tel' => '+639175558291',
+                'email' => 'charlspandeo@gmail.com',
                 'facebook_name' => 'facebook.com/pandeo.charls',
                 'messenger_url' => 'https://m.me/pandeo.charls',
                 'messages_url' => 'https://www.facebook.com/messages/t/pandeo.charls',

@@ -534,32 +534,19 @@
                         </div>
                     </div>
 
-                    {{-- Small Inquiry Form --}}
+                    {{-- Interactive Inquiry & Live Trip Preview --}}
                     <div id="inquiry" class="md:col-span-7 bg-white rounded-2xl p-6 sm:p-7 border border-stone-200 shadow-sm">
                         <div class="flex items-center justify-between gap-2">
                             <div>
-                                <h3 class="text-lg sm:text-xl font-bold text-stone-900">Trip Inquiry Form</h3>
-                                <p class="text-xs text-stone-500 mt-0.5">Select your trip details below for a quick quotation. No payment required.</p>
+                                <h3 class="text-lg sm:text-xl font-bold text-stone-900">Trip Inquiry & Instant Chat</h3>
+                                <p class="text-xs text-stone-500 mt-0.5">Select your destination and trip details to generate an instant quote inquiry for Charls.</p>
                             </div>
                             <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-                                ⚡ Fast 15-Sec Inquiry
+                                ⚡ Direct with Charls
                             </span>
                         </div>
 
-                        @if ($errors->any())
-                            <div class="mt-4 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
-                                <p class="font-bold">Please check the following:</p>
-                                <ul class="list-disc list-inside mt-1 space-y-0.5">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        <form id="inquiry-form" action="{{ route('inquire.store') }}" method="POST" class="mt-5 space-y-4">
-                            @csrf
-
+                        <div id="inquiry-form-container" class="mt-5 space-y-4">
                             {{-- 1. Destination Quick-Select Chips --}}
                             <div>
                                 <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
@@ -646,59 +633,18 @@
                                 </div>
                             </div>
 
-                            {{-- Live Selected Trip Summary Badge --}}
-                            <div id="selection-summary" class="hidden p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-2">
-                                <span class="font-bold shrink-0 text-emerald-800">Trip:</span>
-                                <span id="summary-text" class="font-semibold truncate"></span>
-                            </div>
-
-                            {{-- 4. Contact Details & Date --}}
+                            {{-- 4. Travel Date & Pickup Details --}}
                             <div class="pt-2 border-t border-stone-100">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
-                                        <label for="name" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                            Your Name <span class="text-red-500">*</span>
-                                        </label>
-                                        <input 
-                                            type="text" 
-                                            name="name" 
-                                            id="name" 
-                                            required 
-                                            value="{{ old('name') }}"
-                                            placeholder="e.g. Maria Santos" 
-                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
-                                        >
-                                    </div>
-
-                                    <div>
-                                        <label for="phone" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                            Contact Number <span class="text-red-500">*</span>
-                                        </label>
-                                        <input 
-                                            type="tel" 
-                                            name="phone" 
-                                            id="phone" 
-                                            inputmode="tel"
-                                            required 
-                                            value="{{ old('phone') }}"
-                                            placeholder="0917-xxx-xxxx" 
-                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
-                                        >
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3.5">
-                                    <div>
                                         <label for="rental_date" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                            Rental / Travel Date <span class="text-red-500">*</span>
+                                            Rental / Travel Date
                                         </label>
                                         <input 
                                             type="date" 
-                                            name="rental_date" 
                                             id="rental_date" 
-                                            required 
                                             min="{{ date('Y-m-d') }}"
-                                            value="{{ old('rental_date') }}"
+                                            value="{{ date('Y-m-d', strtotime('+3 days')) }}"
                                             class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
                                         >
                                     </div>
@@ -710,60 +656,130 @@
                                         <input 
                                             type="text" 
                                             id="notes-input" 
-                                            placeholder="e.g. Pickup in QC or flight time"
+                                            placeholder="e.g. Pickup in QC or flight arrival time"
+                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3.5">
+                                    <div>
+                                        <label for="name" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
+                                            Your Name <span class="text-stone-400 font-normal">(Optional)</span>
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            id="name" 
+                                            placeholder="e.g. Maria Santos" 
+                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label for="phone" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
+                                            Contact Number <span class="text-stone-400 font-normal">(Optional)</span>
+                                        </label>
+                                        <input 
+                                            type="tel" 
+                                            id="phone" 
+                                            inputmode="tel"
+                                            placeholder="0917-xxx-xxxx" 
                                             class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
                                         >
                                     </div>
                                 </div>
                             </div>
 
-                            {{-- Hidden Auto-Compiled Message Field --}}
-                            <textarea name="message" id="message" class="hidden">{{ old('message') }}</textarea>
-
-                            {{-- Inquiry Action Buttons --}}
-                            <div class="space-y-3 pt-2">
-                                {{-- Primary Action: Direct Website Submit (100% No Login Needed) --}}
-                                <button 
-                                    type="submit" 
-                                    class="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.99] shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2 transition cursor-pointer"
-                                >
-                                    <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                                    <span>Submit Trip Inquiry (No Login Needed)</span>
-                                </button>
-
-                                {{-- Divider --}}
-                                <div class="relative flex py-0.5 items-center">
-                                    <div class="flex-grow border-t border-stone-200"></div>
-                                    <span class="flex-shrink mx-3 text-[11px] uppercase tracking-wider text-stone-400 font-semibold">Or send directly via</span>
-                                    <div class="flex-grow border-t border-stone-200"></div>
+                            {{-- Live Trip Overview Preview Card --}}
+                            <div id="selection-summary" class="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 space-y-1.5">
+                                <div class="flex items-center justify-between pb-1 border-b border-stone-200/70">
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+                                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        Trip Inquiry Overview
+                                    </span>
+                                    <span class="text-[10px] text-stone-500 font-medium">
+                                        Toyota HiAce (Haru)
+                                    </span>
                                 </div>
-
-                                {{-- Secondary Action: Facebook Messenger for logged-in users --}}
-                                <button 
-                                    type="button" 
-                                    id="btn-send-messenger"
-                                    onclick="sendViaMessenger()"
-                                    class="w-full py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 active:scale-[0.99] flex items-center justify-center gap-2 transition cursor-pointer"
-                                >
-                                    <svg class="w-4 h-4 shrink-0 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
-                                    <span>Chat with Charls on Facebook Messenger</span>
-                                </button>
+                                <div class="text-xs grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-4 pt-0.5">
+                                    <div>
+                                        <span class="text-stone-400">Destination:</span> 
+                                        <span id="preview-dest" class="font-bold text-stone-900">Baguio City</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-stone-400">Trip Type:</span> 
+                                        <span id="preview-triptype" class="font-semibold text-stone-800">Day Tour (Balikan)</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-stone-400">Group Size:</span> 
+                                        <span id="preview-pax" class="font-semibold text-stone-800">11 – 14 Pax (Full)</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-stone-400">Date:</span> 
+                                        <span id="preview-date" class="font-semibold text-stone-800">{{ date('M d, Y', strtotime('+3 days')) }}</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <p class="text-center text-[11px] text-stone-500">
-                                No account or advance payment required. Charls will confirm van availability first.
+                            {{-- Direct One-Click Inquiry Actions (No submit to database button) --}}
+                            <div class="space-y-2.5 pt-2">
+                                {{-- Primary Action: Direct Facebook Messenger Chat --}}
+                                <button 
+                                    type="button" 
+                                    id="btn-chat-messenger"
+                                    onclick="chatOnMessenger()"
+                                    class="w-full py-3.5 px-5 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/20 flex items-center justify-center gap-2.5 transition cursor-pointer"
+                                >
+                                    <svg class="w-5 h-5 shrink-0 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                                    <span>Chat with Charls on Facebook Messenger</span>
+                                </button>
+
+                                {{-- Secondary Action: Direct Gmail / Email Inquiry --}}
+                                <button 
+                                    type="button" 
+                                    id="btn-inquire-gmail"
+                                    onclick="inquireViaGmail()"
+                                    class="w-full py-3 px-5 rounded-xl font-bold text-sm text-stone-800 bg-stone-50 hover:bg-stone-100 border border-stone-300 active:scale-[0.99] flex items-center justify-center gap-2.5 transition cursor-pointer"
+                                >
+                                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.545l8.073-6.052C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                                    <span>Inquire via Gmail ({{ $van['owner']['email'] }})</span>
+                                </button>
+
+                                {{-- Fast Mobile Alternatives: SMS Text & Phone Call --}}
+                                <div class="grid grid-cols-2 gap-2 pt-1">
+                                    <button 
+                                        type="button" 
+                                        id="btn-inquire-sms"
+                                        onclick="inquireViaSms()"
+                                        class="py-2.5 px-3 rounded-xl font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition cursor-pointer"
+                                    >
+                                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                                        <span>Send via SMS / Text</span>
+                                    </button>
+                                    <a 
+                                        href="tel:{{ $van['owner']['phone_tel'] }}"
+                                        class="py-2.5 px-3 rounded-xl font-semibold text-xs text-stone-700 bg-white hover:bg-stone-50 border border-stone-200 active:scale-[0.98] flex items-center justify-center gap-1.5 transition text-center"
+                                    >
+                                        <svg class="w-3.5 h-3.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                        <span>Direct Call: {{ $van['owner']['phone_display'] }}</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="text-center text-[11px] text-stone-500 pt-1">
+                                No registration or advance payment required. Connects you directly with Charls Pandeo for the best rates and quick confirmation.
                             </p>
-                        </form>
+                        </div>
 
                         {{-- Messenger Feedback Alert Modal/Toast --}}
                         <div id="messenger-modal" class="hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-4">
                             <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl border border-stone-200 animate-in fade-in zoom-in duration-200">
                                 <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                                    <svg class="w-8 h-8 text-blue-600 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
                                 </div>
-                                <h4 class="text-lg font-bold text-stone-900">Inquiry Details Copied!</h4>
+                                <h4 class="text-lg font-bold text-stone-900">Trip Details Copied to Clipboard!</h4>
                                 <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">
-                                    Your trip details have been copied to your clipboard. Simply paste them into the chat and send them to Charls on Messenger!
+                                    Your complete trip details are copied. Opening Facebook Messenger so you can paste and chat with Charls directly!
                                 </p>
 
                                 <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line" id="preview-text"></div>
@@ -782,7 +798,7 @@
                                     <button 
                                         type="button" 
                                         onclick="closeMessengerModal()" 
-                                        class="text-xs font-semibold text-stone-500 hover:text-stone-800 py-1"
+                                        class="text-xs font-semibold text-stone-500 hover:text-stone-800 py-1 cursor-pointer"
                                     >
                                         Close
                                     </button>
@@ -865,29 +881,26 @@
         </div>
     </div>
 
-    {{-- JavaScript for Phone Copy, Chips & Messenger Auto-Send --}}
+    {{-- JavaScript for Live Inquiry Preview, Direct Messenger & Gmail Launchers --}}
     <script>
-        let selectedDestination = '';
-        let selectedTripType = '';
-        let selectedPax = '';
+        let selectedDestination = 'Baguio City';
+        let selectedTripType = 'Day Tour (Balikan)';
+        let selectedPax = '11 – 14 Pax (Full)';
 
-        // Initialize Quick-Select Chips
         document.addEventListener('DOMContentLoaded', function () {
+            // Set default highlighted chips on page load
+            highlightChip('destination', selectedDestination);
+            highlightChip('triptype', selectedTripType);
+            highlightChip('pax', selectedPax);
+            updateInquiryLivePreview();
+
+            // Setup click listeners for chips
             document.querySelectorAll('.chip-btn').forEach(btn => {
                 btn.addEventListener('click', function () {
                     const type = this.dataset.type;
                     const val = this.dataset.value;
 
-                    // De-select siblings in same group
-                    const group = document.querySelectorAll(`.chip-btn[data-type="${type}"]`);
-                    group.forEach(b => {
-                        b.classList.remove('bg-emerald-700', 'text-white', 'border-emerald-700', 'shadow-xs');
-                        b.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
-                    });
-
-                    // Highlight selected chip
-                    this.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200');
-                    this.classList.add('bg-emerald-700', 'text-white', 'border-emerald-700', 'shadow-xs');
+                    highlightChip(type, val);
 
                     if (type === 'destination') {
                         const customWrapper = document.getElementById('custom-dest-wrapper');
@@ -906,54 +919,189 @@
                         selectedPax = val;
                     }
 
-                    updateMessagePayload();
+                    updateInquiryLivePreview();
                 });
             });
 
-            // Listen to typing in custom inputs
+            // Listen to typing in custom destination
             const customInput = document.getElementById('custom-dest-input');
             if (customInput) {
                 customInput.addEventListener('input', function () {
                     selectedDestination = this.value.trim() || 'Custom Destination';
-                    updateMessagePayload();
+                    updateInquiryLivePreview();
                 });
+            }
+
+            // Listen to date & notes changes
+            const dateInput = document.getElementById('rental_date');
+            if (dateInput) {
+                dateInput.addEventListener('change', updateInquiryLivePreview);
+                dateInput.addEventListener('input', updateInquiryLivePreview);
             }
 
             const notesInput = document.getElementById('notes-input');
             if (notesInput) {
-                notesInput.addEventListener('input', updateMessagePayload);
+                notesInput.addEventListener('input', updateInquiryLivePreview);
             }
         });
 
-        function updateMessagePayload() {
-            const parts = [];
-            if (selectedDestination) parts.push('Destination: ' + selectedDestination);
-            if (selectedTripType) parts.push('Trip Type: ' + selectedTripType);
-            if (selectedPax) parts.push('Passengers: ' + selectedPax);
+        function highlightChip(type, value) {
+            const group = document.querySelectorAll(`.chip-btn[data-type="${type}"]`);
+            group.forEach(b => {
+                if (b.dataset.value === value) {
+                    b.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200');
+                    b.classList.add('bg-emerald-700', 'text-white', 'border-emerald-700', 'shadow-xs');
+                } else {
+                    b.classList.remove('bg-emerald-700', 'text-white', 'border-emerald-700', 'shadow-xs');
+                    b.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+                }
+            });
+        }
 
+        function updateInquiryLivePreview() {
+            const destEl = document.getElementById('preview-dest');
+            const typeEl = document.getElementById('preview-triptype');
+            const paxEl = document.getElementById('preview-pax');
+            const dateEl = document.getElementById('preview-date');
+
+            if (destEl) destEl.textContent = selectedDestination || 'Baguio City';
+            if (typeEl) typeEl.textContent = selectedTripType || 'Day Tour';
+            if (paxEl) paxEl.textContent = selectedPax || '11 – 14 Pax (Full)';
+
+            const dateVal = document.getElementById('rental_date')?.value;
+            if (dateEl && dateVal) {
+                const d = new Date(dateVal + 'T00:00:00');
+                if (!isNaN(d.getTime())) {
+                    dateEl.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                } else {
+                    dateEl.textContent = dateVal;
+                }
+            }
+        }
+
+        function getInquirySummary() {
+            const dest = selectedDestination || 'Baguio City';
+            const triptype = selectedTripType || 'Day Tour';
+            const pax = selectedPax || '11 – 14 Pax (Full Van)';
+            const rawDate = document.getElementById('rental_date')?.value || '';
+            let formattedDate = rawDate;
+            if (rawDate) {
+                const d = new Date(rawDate + 'T00:00:00');
+                if (!isNaN(d.getTime())) {
+                    formattedDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                }
+            }
             const notes = document.getElementById('notes-input')?.value.trim();
-            if (notes) parts.push('Notes: ' + notes);
+            const name = document.getElementById('name')?.value.trim();
+            const phone = document.getElementById('phone')?.value.trim();
 
-            const messageField = document.getElementById('message');
-            if (messageField) {
-                messageField.value = parts.join(' | ');
+            const lines = [
+                'Hello Charls! I would like to ask for a quotation for Haru The Friendly Van:',
+                '• Destination: ' + dest,
+                '• Trip Type: ' + triptype,
+                '• Group Size: ' + pax,
+                '• Travel Date: ' + (formattedDate || 'To be discussed'),
+                (notes ? '• Pickup Location / Notes: ' + notes : ''),
+                (name ? '• Client Name: ' + name : ''),
+                (phone ? '• Contact Number: ' + phone : '')
+            ].filter(Boolean);
+
+            return {
+                dest: dest,
+                triptype: triptype,
+                pax: pax,
+                date: formattedDate || 'To be discussed',
+                notes: notes,
+                name: name,
+                phone: phone,
+                text: lines.join('\n')
+            };
+        }
+
+        function silentlySaveInquiry(data) {
+            fetch('{{ route('inquire.store') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: data.name || 'Website Visitor (Instant Inquiry)',
+                    phone: data.phone || 'Direct Chat/Email',
+                    rental_date: document.getElementById('rental_date')?.value || new Date().toISOString().split('T')[0],
+                    message: data.text
+                })
+            }).catch(() => {});
+        }
+
+        function chatOnMessenger() {
+            const data = getInquirySummary();
+            silentlySaveInquiry(data);
+
+            // Copy formatted inquiry details to clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(data.text).catch(() => {});
             }
 
-            // Update live summary
-            const summaryWrapper = document.getElementById('selection-summary');
-            const summaryText = document.getElementById('summary-text');
-            if (summaryWrapper && summaryText) {
-                const summaryParts = [];
-                if (selectedDestination) summaryParts.push(selectedDestination);
-                if (selectedTripType) summaryParts.push(selectedTripType);
-                if (selectedPax) summaryParts.push(selectedPax);
+            // Show feedback modal
+            const previewEl = document.getElementById('preview-text');
+            if (previewEl) {
+                previewEl.textContent = data.text;
+            }
+            const modal = document.getElementById('messenger-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
 
-                if (summaryParts.length > 0) {
-                    summaryWrapper.classList.remove('hidden');
-                    summaryText.textContent = summaryParts.join(' • ');
-                } else {
-                    summaryWrapper.classList.add('hidden');
-                }
+            // Open Facebook Messenger chat
+            const messengerUrl = '{{ $van['owner']['messages_url'] }}';
+            window.open(messengerUrl, '_blank');
+        }
+
+        function inquireViaGmail() {
+            const data = getInquirySummary();
+            silentlySaveInquiry(data);
+
+            const emailTo = '{{ $van['owner']['email'] ?? 'charlspandeo@gmail.com' }}';
+            const subject = 'Van Rental Inquiry: ' + data.dest + ' (' + data.date + ') - Haru The Friendly Van';
+            const body = 'Hello Charls,\n\nI would like to inquire about booking Haru The Friendly Van for our trip:\n\n' +
+                '• Destination: ' + data.dest + '\n' +
+                '• Trip Type: ' + data.triptype + '\n' +
+                '• Group Size: ' + data.pax + '\n' +
+                '• Date of Travel: ' + data.date + '\n' +
+                (data.notes ? '• Pickup Location / Notes: ' + data.notes + '\n' : '') +
+                (data.name ? '• Client Name: ' + data.name + '\n' : '') +
+                (data.phone ? '• Contact Number: ' + data.phone + '\n' : '') +
+                '\nPlease let me know your quotation and availability.\n\nThank you!';
+
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(body);
+
+            // Direct Gmail Web compose URL
+            const gmailWebUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(emailTo) + '&su=' + encodedSubject + '&body=' + encodedBody;
+            const mailtoUrl = 'mailto:' + encodeURIComponent(emailTo) + '?subject=' + encodedSubject + '&body=' + encodedBody;
+
+            // Open Gmail Web in new tab, or fallback to default email client
+            const win = window.open(gmailWebUrl, '_blank');
+            if (!win || win.closed || typeof win.closed === 'undefined') {
+                window.location.href = mailtoUrl;
+            }
+        }
+
+        function inquireViaSms() {
+            const data = getInquirySummary();
+            silentlySaveInquiry(data);
+
+            const phone = '{{ $van['owner']['phone_tel'] }}';
+            const smsBody = encodeURIComponent(data.text);
+            window.location.href = 'sms:' + phone + '?body=' + smsBody;
+        }
+
+        function closeMessengerModal() {
+            const modal = document.getElementById('messenger-modal');
+            if (modal) {
+                modal.classList.add('hidden');
             }
         }
 
@@ -994,63 +1142,6 @@
                 btn.classList.remove('bg-emerald-600', 'text-white');
                 btn.classList.add('bg-stone-200/80', 'text-stone-700');
             }, 2000);
-        }
-
-        function sendViaMessenger() {
-            const form = document.getElementById('inquiry-form');
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const rentalDate = document.getElementById('rental_date').value;
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !phone || !rentalDate) {
-                form.reportValidity();
-                return;
-            }
-
-            const formattedMessage = [
-                'Hello Charls! Trip inquiry for Haru The Friendly Van:',
-                '• Name: ' + name,
-                '• Contact: ' + phone,
-                '• Travel Date: ' + rentalDate,
-                (selectedDestination ? '• Destination: ' + selectedDestination : ''),
-                (selectedTripType ? '• Trip Type: ' + selectedTripType : ''),
-                (selectedPax ? '• Estimated Pax: ' + selectedPax : ''),
-                (message ? '• Details: ' + message : '')
-            ].filter(Boolean).join('\n');
-
-            // Save to database in the background so lead is never lost
-            fetch('{{ route('inquire.store') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    phone: phone,
-                    rental_date: rentalDate,
-                    message: message || (selectedDestination ? 'Destination: ' + selectedDestination : 'Inquiry via Messenger')
-                })
-            }).catch(() => {});
-
-            // Copy to clipboard
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(formattedMessage).catch(() => {});
-            }
-
-            // Show feedback modal
-            document.getElementById('preview-text').textContent = formattedMessage;
-            document.getElementById('messenger-modal').classList.remove('hidden');
-
-            // Open Messenger directly
-            const messengerUrl = '{{ $van['owner']['messages_url'] }}';
-            window.open(messengerUrl, '_blank');
-        }
-
-        function closeMessengerModal() {
-            document.getElementById('messenger-modal').classList.add('hidden');
         }
     </script>
 </body>

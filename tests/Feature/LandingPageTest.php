@@ -21,9 +21,11 @@ class LandingPageTest extends TestCase
         $response->assertSee('Comfortable and reliable van for your trips.');
         $response->assertSee('Toyota HiAce');
         $response->assertSee('Meet Charls Pandeo');
-        $response->assertSee('Charls Pandeo');
-        $response->assertSee('Trip Inquiry Form');
-        $response->assertSee('Submit Trip Inquiry (No Login Needed)');
+        $response->assertSee('Trip Inquiry & Instant Chat', false);
+        $response->assertSee('Chat with Charls on Facebook Messenger');
+        $response->assertSee('Inquire via Gmail');
+        $response->assertSee('charlspandeo@gmail.com');
+        $response->assertSee('Send via SMS / Text');
         $response->assertSee('chip-btn');
         $response->assertSee('Baguio City');
         $response->assertSee('Tagaytay');
