@@ -1,0 +1,82 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Inquiry;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class VanRentalController extends Controller
+{
+    /**
+     * Show the landing page for Haru The Friendly Van.
+     */
+    public function index(): View
+    {
+        $van = [
+            'name' => 'Haru The Friendly Van',
+            'headline' => 'Comfortable and reliable van for your trips.',
+            'subheadline' => 'Safe, comfortable, and affordable passenger van rental with a trusted, friendly driver. Ideal for family vacations, airport transfers, barkada getaways, and out-of-town adventures.',
+            'model' => 'Toyota HiAce Commuter / Grandia',
+            'capacity' => 'Up to 12 - 14 Passengers',
+            'ac' => 'Dual Front & Rear Air Conditioning',
+            'description' => 'A well-maintained, clean, and smoke-free 14-seater van designed for comfortable long-distance travel across Luzon. Equipped with ice-cold dual air conditioning, reclining seats, generous luggage space, and regular safety inspections.',
+            'service_type' => 'With Professional Driver (No self-drive)',
+            'availability' => 'Available 7 days a week (Advance booking recommended)',
+            'location' => 'Metro Manila & Rizal (Servicing all points in Luzon)',
+            'owner' => [
+                'name' => 'Haru Ramos',
+                'role' => 'Owner & Driver',
+                'phone' => '+63 917 555 8291',
+                'phone_display' => '0917-555-8291',
+                'facebook_name' => 'Haru The Friendly Van',
+                'messenger_url' => 'https://m.me/HaruTheFriendlyVan',
+                'facebook_url' => 'https://facebook.com/HaruTheFriendlyVan',
+                'location' => 'Metro Manila & Rizal (Trips across Luzon)',
+            ],
+            'specs' => [
+                [
+                    'label' => 'Van Model',
+                    'value' => 'Toyota HiAce High-Roof',
+                    'detail' => 'Smooth, dependable ride',
+                ],
+                [
+                    'label' => 'Passenger Capacity',
+                    'value' => '12 – 14 Seats',
+                    'detail' => 'Plenty of legroom for all',
+                ],
+                [
+                    'label' => 'Air Conditioning',
+                    'value' => 'Dual Front & Rear AC',
+                    'detail' => 'Crisp & cool in summer heat',
+                ],
+                [
+                    'label' => 'Luggage Space',
+                    'value' => 'Spacious Trunk',
+                    'detail' => 'Fits suitcases, bags & coolers',
+                ],
+            ],
+        ];
+
+        return view('landing', compact('van'));
+    }
+
+    /**
+     * Handle trip inquiry submission.
+     */
+    public function storeInquiry(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:100'],
+            'phone' => ['required', 'string', 'max:30'],
+            'rental_date' => ['required', 'date', 'after_or_equal:today'],
+            'message' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        Inquiry::create($validated);
+
+        return redirect()->to(url()->previous().'#inquiry')
+            ->with('success', 'Thank you! Your trip inquiry has been received. Kuya Haru will call or text you shortly to confirm your schedule and provide a direct quote.');
+    }
+}
