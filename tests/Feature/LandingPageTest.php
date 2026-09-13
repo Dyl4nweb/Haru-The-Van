@@ -20,7 +20,7 @@ class LandingPageTest extends TestCase
         $response->assertSee('Haru The Friendly Van');
         $response->assertSee('Comfortable and reliable van for your trips.');
         $response->assertSee('Toyota HiAce');
-        $response->assertSee('Meet Kuya Charls');
+        $response->assertSee('Meet Charls Pandio');
         $response->assertSee('Charls Pandio');
         $response->assertSee('Trip Inquiry Form');
         $response->assertSee('Call Now');

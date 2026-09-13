@@ -215,7 +215,7 @@
                     <div>
                         <span class="text-xs uppercase tracking-wider text-emerald-700 font-bold">About Our Business</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">
-                            Meet Kuya Charls
+                            Meet Charls Pandio
                         </h2>
                         <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
                             Hello! I am Charls Pandio, owner and dedicated driver of <strong>Haru The Friendly Van</strong>. As an independent single-van operator, I personally manage every booking, inspect every tire, and drive every trip with patient, safe, and family-first care.
@@ -423,7 +423,7 @@
                             </div>
 
                             <p class="text-center text-[11px] text-stone-500">
-                                No advance payment required for inquiries. Kuya Charls will confirm van availability first.
+                                No advance payment required for inquiries. Charls will confirm van availability first.
                             </p>
                         </form>
 
@@ -435,7 +435,7 @@
                                 </div>
                                 <h4 class="text-lg font-bold text-stone-900">Inquiry Details Copied!</h4>
                                 <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">
-                                    Your trip details have been copied to your clipboard. Simply paste them into the chat and send them to Kuya Charls on Messenger!
+                                    Your trip details have been copied to your clipboard. Simply paste them into the chat and send them to Charls on Messenger!
                                 </p>
 
                                 <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line" id="preview-text"></div>
@@ -511,7 +511,7 @@
             }
 
             const formattedMessage = [
-                'Hello Kuya Charls! Trip inquiry for Haru The Friendly Van:',
+                'Hello Charls! Trip inquiry for Haru The Friendly Van:',
                 '• Name: ' + name,
                 '• Contact: ' + phone,
                 '• Travel Date: ' + rentalDate,

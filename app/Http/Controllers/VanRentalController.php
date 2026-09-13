@@ -85,6 +85,6 @@ class VanRentalController extends Controller
         }
 
         return redirect()->to(url()->previous().'#inquiry')
-            ->with('success', 'Thank you! Your trip inquiry has been received. Kuya Charls will call or text you shortly to confirm your schedule and provide a direct quote.');
+            ->with('success', 'Thank you! Your trip inquiry has been received. Charls will call or text you shortly to confirm your schedule and provide a direct quote.');
     }
 }
