@@ -411,19 +411,19 @@
                                     class="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/25 flex items-center justify-center gap-2 transition cursor-pointer"
                                 >
                                     <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
-                                    <span>Ipadala Diretso sa Messenger</span>
+                                    <span>Send Directly to Messenger</span>
                                 </button>
 
                                 <button 
                                     type="submit" 
                                     class="w-full py-2.5 px-4 rounded-xl font-semibold text-xs text-stone-600 bg-stone-100 hover:bg-stone-200 border border-stone-300 active:scale-[0.99] transition cursor-pointer"
                                 >
-                                    O i-submit lang sa website form (kung walang Messenger)
+                                    Or submit website inquiry form
                                 </button>
                             </div>
 
                             <p class="text-center text-[11px] text-stone-500">
-                                Walang paunang bayad para sa inquiry. I-co-confirm muna ni Kuya Charls ang availability ng van.
+                                No advance payment required for inquiries. Kuya Charls will confirm van availability first.
                             </p>
                         </form>
 
@@ -433,9 +433,9 @@
                                 <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
                                 </div>
-                                <h4 class="text-lg font-bold text-stone-900">Nai-copy na ang iyong Inquiry!</h4>
+                                <h4 class="text-lg font-bold text-stone-900">Inquiry Details Copied!</h4>
                                 <p class="text-stone-600 text-xs sm:text-sm mt-2 leading-relaxed">
-                                    Naka-copy na sa iyong clipboard ang kumpletong detalye ng biyahe. I-paste mo na lang sa chat at i-send kay Kuya Charls sa Messenger!
+                                    Your trip details have been copied to your clipboard. Simply paste them into the chat and send them to Kuya Charls on Messenger!
                                 </p>
 
                                 <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-200 text-left text-xs text-stone-700 font-mono whitespace-pre-line" id="preview-text"></div>
@@ -448,7 +448,7 @@
                                         rel="noopener"
                                         class="w-full py-3 px-4 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition flex items-center justify-center gap-2"
                                     >
-                                        <span>Buksan ang Messenger Chat</span>
+                                        <span>Open Messenger Chat</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                     </a>
                                     <button 
@@ -456,7 +456,7 @@
                                         onclick="closeMessengerModal()" 
                                         class="text-xs font-semibold text-stone-500 hover:text-stone-800 py-1"
                                     >
-                                        Isara (Close)
+                                        Close
                                     </button>
                                 </div>
                             </div>
@@ -511,11 +511,11 @@
             }
 
             const formattedMessage = [
-                'Kumusta Kuya Charls! Trip inquiry po para sa Haru The Friendly Van:',
-                '• Pangalan: ' + name,
+                'Hello Kuya Charls! Trip inquiry for Haru The Friendly Van:',
+                '• Name: ' + name,
                 '• Contact: ' + phone,
-                '• Petsa ng Biyahe: ' + rentalDate,
-                '• Detalye / Destinasyon: ' + (message || 'Pag-uusapan sa chat')
+                '• Travel Date: ' + rentalDate,
+                '• Details / Destination: ' + (message || 'To be discussed in chat')
             ].join('\n');
 
             // Save to database in the background so lead is never lost

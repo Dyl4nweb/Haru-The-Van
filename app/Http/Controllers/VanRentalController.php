@@ -80,7 +80,7 @@ class VanRentalController extends Controller
         if ($request->expectsJson()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Salamat! Nai-record na ang iyong inquiry.',
+                'message' => 'Thank you! Your trip inquiry has been received.',
             ]);
         }
 
