@@ -209,11 +209,11 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6">
                 
                 <div class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-stone-200 shadow-sm">
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-center">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         
-                        {{-- Prominent Driver Portrait Column (Larger on Mobile & Desktop) --}}
-                        <div class="md:col-span-5 flex flex-col items-center">
-                            <div class="relative w-full max-w-[340px] sm:max-w-sm md:max-w-none aspect-square rounded-3xl overflow-hidden shadow-xl border-4 sm:border-8 border-white ring-1 ring-stone-200/80 bg-stone-100 group">
+                        {{-- Prominent Driver Portrait Column (Significantly Enlarged on Desktop & Mobile) --}}
+                        <div class="lg:col-span-6 w-full flex flex-col items-center">
+                            <div class="relative w-full max-w-lg aspect-square sm:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-8 border-white ring-1 ring-stone-200/90 bg-stone-100 group">
                                 <img 
                                     src="{{ asset('images/charls-driver.jpg') }}" 
                                     alt="Charls Pandeo - Owner and Driver of Haru The Friendly Van" 
@@ -222,24 +222,24 @@
                                 />
                                 
                                 {{-- Badges on Image --}}
-                                <div class="absolute top-3 left-3 bg-stone-900/80 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <div class="absolute top-4 left-4 bg-stone-900/85 backdrop-blur-md text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-2 border border-white/20">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                                     <span>Owner & Dedicated Driver</span>
                                 </div>
 
-                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/80 via-stone-950/40 to-transparent p-4 text-white">
-                                    <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Your Driver</p>
-                                    <p class="text-lg font-bold">Charls Pandeo</p>
-                                    <p class="text-xs text-stone-300">Haru The Friendly Van</p>
+                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/50 to-transparent p-5 sm:p-6 text-white">
+                                    <p class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Driver & Operator</p>
+                                    <h3 class="text-xl sm:text-2xl font-black tracking-tight">Charls Pandeo</h3>
+                                    <p class="text-xs sm:text-sm text-stone-200 mt-0.5 font-medium">Haru The Friendly Van • Metro Manila & Luzon Trips</p>
                                 </div>
                             </div>
-                            <p class="text-[11px] text-stone-500 text-center mt-3">
-                                Friendly, punctual, and safe road trip driver across Luzon
+                            <p class="text-xs text-stone-500 text-center mt-3 font-medium">
+                                Personalized service — Charls personally drives and inspects Haru on every trip.
                             </p>
                         </div>
                         
                         {{-- Content Column --}}
-                        <div class="md:col-span-7 text-center md:text-left">
+                        <div class="lg:col-span-6 text-center lg:text-left">
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 mb-3">
                                 <svg class="w-3.5 h-3.5 text-emerald-700" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
@@ -304,6 +304,18 @@
                                         <p class="text-[11px] text-stone-500">Talk directly to Charls without middle-men</p>
                                     </div>
                                 </div>
+                            </div>
+
+                            {{-- Direct Action in About Card --}}
+                            <div class="mt-6 pt-5 border-t border-stone-100 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                                <a href="#inquiry" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-95 shadow-sm transition">
+                                    <span>Plan Trip with Charls</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                </a>
+                                <a href="tel:{{ $van['owner']['phone_tel'] }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-300 active:scale-95 transition">
+                                    <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                    <span>Call {{ $van['owner']['phone_display'] }}</span>
+                                </a>
                             </div>
 
                         </div>
