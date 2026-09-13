@@ -23,7 +23,10 @@ class LandingPageTest extends TestCase
         $response->assertSee('Meet Charls Pandio');
         $response->assertSee('Charls Pandio');
         $response->assertSee('Trip Inquiry Form');
-        $response->assertSee('Call Now');
+        $response->assertSee('Submit Trip Inquiry (No Login Needed)');
+        $response->assertSee('tel:+639175558291');
+        $response->assertSee('btn-copy-phone');
+        $response->assertSee('copyPhoneNumber');
         $response->assertSee('Messenger');
     }
 
