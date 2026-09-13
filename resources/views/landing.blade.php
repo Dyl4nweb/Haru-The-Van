@@ -41,7 +41,7 @@
                     <a href="#contact" class="hover:text-emerald-700 transition">Contact</a>
                 </nav>
 
-                <a href="tel:{{ $van['owner']['phone'] }}" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition">
+                <a href="tel:{{ $van['owner']['phone_tel'] }}" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition">
                     <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
@@ -93,7 +93,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                             </svg>
                         </a>
-                        <a href="tel:{{ $van['owner']['phone'] }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-base font-semibold text-stone-800 bg-white border border-stone-300 hover:bg-stone-50 active:scale-[0.98] transition">
+                        <a href="tel:{{ $van['owner']['phone_tel'] }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-base font-semibold text-stone-800 bg-white border border-stone-300 hover:bg-stone-50 active:scale-[0.98] transition">
                             <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                             </svg>
@@ -288,9 +288,29 @@
                                 <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                                 </div>
-                                <div>
+                                <div class="flex-1 min-w-0">
                                     <p class="text-xs text-stone-500 font-medium">Phone Number</p>
-                                    <p class="text-sm font-bold text-stone-900">{{ $van['owner']['phone_display'] }}</p>
+                                    <div class="flex flex-wrap items-center gap-2 mt-0.5">
+                                        <a 
+                                            href="tel:{{ $van['owner']['phone_tel'] }}" 
+                                            class="text-sm sm:text-base font-bold text-stone-900 hover:text-emerald-700 active:text-emerald-800 transition inline-flex items-center gap-1.5"
+                                            title="Tap to call directly on phone"
+                                        >
+                                            <span>{{ $van['owner']['phone_display'] }}</span>
+                                            <span class="text-[10px] font-semibold text-emerald-700 bg-emerald-100/80 px-1.5 py-0.5 rounded">Tap to Call</span>
+                                        </a>
+                                        <button 
+                                            type="button" 
+                                            onclick="copyPhoneNumber('{{ $van['owner']['phone_display'] }}')" 
+                                            id="btn-copy-phone"
+                                            class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-stone-700 bg-stone-200/80 hover:bg-stone-300 active:scale-95 transition cursor-pointer"
+                                            title="Copy phone number to clipboard"
+                                        >
+                                            <svg id="copy-phone-icon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                            <span id="copy-phone-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <p class="text-[11px] text-stone-500 mt-1">Direct call opens dialer immediately on mobile</p>
                                 </div>
                             </div>
 
@@ -300,7 +320,7 @@
                                 </div>
                                 <div>
                                     <p class="text-xs text-stone-500 font-medium">Facebook & Messenger</p>
-                                    <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="text-sm font-bold text-emerald-700 hover:underline">
+                                    <a href="{{ $van['owner']['messages_url'] }}" target="_blank" rel="noopener" class="text-sm font-bold text-emerald-700 hover:underline">
                                         {{ $van['owner']['facebook_name'] }}
                                     </a>
                                 </div>
@@ -331,11 +351,11 @@
 
                         {{-- Action Buttons --}}
                         <div class="mt-7 pt-6 border-t border-stone-200/80 flex flex-col sm:flex-row gap-3">
-                            <a href="tel:{{ $van['owner']['phone'] }}" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] shadow-sm transition">
+                            <a href="tel:{{ $van['owner']['phone_tel'] }}" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] shadow-sm transition">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                <span>Call Now</span>
+                                <span>Call Now (Direct)</span>
                             </a>
-                            <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-stone-800 bg-white border border-stone-300 hover:bg-stone-50 active:scale-[0.98] transition">
+                            <a href="{{ $van['owner']['messages_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-stone-800 bg-white border border-stone-300 hover:bg-stone-50 active:scale-[0.98] transition">
                                 <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
                                 <span>Message</span>
                             </a>
@@ -422,28 +442,38 @@
                                 >{{ old('message') }}</textarea>
                             </div>
 
-                            {{-- Messenger Direct Send Button (Primary) --}}
-                            <div class="space-y-2 pt-1">
+                            {{-- Inquiry Action Buttons --}}
+                            <div class="space-y-3 pt-2">
+                                {{-- Primary Action: Direct Website Submit (100% No Login Needed) --}}
+                                <button 
+                                    type="submit" 
+                                    class="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.99] shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2 transition cursor-pointer"
+                                >
+                                    <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                                    <span>Submit Trip Inquiry (No Login Needed)</span>
+                                </button>
+
+                                {{-- Divider --}}
+                                <div class="relative flex py-0.5 items-center">
+                                    <div class="flex-grow border-t border-stone-200"></div>
+                                    <span class="flex-shrink mx-3 text-[11px] uppercase tracking-wider text-stone-400 font-semibold">Or send directly via</span>
+                                    <div class="flex-grow border-t border-stone-200"></div>
+                                </div>
+
+                                {{-- Secondary Action: Facebook Messenger for logged-in users --}}
                                 <button 
                                     type="button" 
                                     id="btn-send-messenger"
                                     onclick="sendViaMessenger()"
-                                    class="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.99] shadow-md shadow-blue-600/25 flex items-center justify-center gap-2 transition cursor-pointer"
+                                    class="w-full py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 active:scale-[0.99] flex items-center justify-center gap-2 transition cursor-pointer"
                                 >
-                                    <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
-                                    <span>Send Directly to Messenger</span>
-                                </button>
-
-                                <button 
-                                    type="submit" 
-                                    class="w-full py-2.5 px-4 rounded-xl font-semibold text-xs text-stone-600 bg-stone-100 hover:bg-stone-200 border border-stone-300 active:scale-[0.99] transition cursor-pointer"
-                                >
-                                    Or submit website inquiry form
+                                    <svg class="w-4 h-4 shrink-0 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
+                                    <span>Chat with Charls on Facebook Messenger</span>
                                 </button>
                             </div>
 
                             <p class="text-center text-[11px] text-stone-500">
-                                No advance payment required for inquiries. Charls will confirm van availability first.
+                                No account or advance payment required. Charls will confirm van availability first.
                             </p>
                         </form>
 
@@ -463,7 +493,7 @@
                                 <div class="mt-5 flex flex-col gap-2">
                                     <a 
                                         id="modal-messenger-link" 
-                                        href="{{ $van['owner']['messenger_url'] }}" 
+                                        href="{{ $van['owner']['messages_url'] }}" 
                                         target="_blank" 
                                         rel="noopener"
                                         class="w-full py-3 px-4 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition flex items-center justify-center gap-2"
@@ -515,22 +545,61 @@
     {{-- Mobile Bottom Floating Sticky Action Bar --}}
     <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-stone-200 p-2.5 sm:hidden shadow-lg">
         <div class="flex items-center gap-2">
-            <a href="tel:{{ $van['owner']['phone'] }}" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-700 text-white font-bold text-xs shadow-sm">
+            <a href="tel:{{ $van['owner']['phone_tel'] }}" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-700 text-white font-bold text-xs shadow-sm active:scale-95 transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                <span>Call</span>
+                <span>Call Directly</span>
             </a>
-            <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-sm">
+            <a href="{{ $van['owner']['messenger_url'] }}" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-sm active:scale-95 transition">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.514 3.734 7.205V22l3.37-1.85c.915.253 1.888.39 2.896.39 5.523 0 10-4.145 10-9.282C22 6.145 17.523 2 12 2zm1.04 12.51l-2.656-2.833-5.183 2.833 5.7-6.052 2.723 2.833 5.117-2.833-5.701 6.052z"/></svg>
                 <span>Messenger</span>
             </a>
-            <a href="#inquiry" class="inline-flex items-center justify-center p-2.5 rounded-xl bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold" title="Inquiry Form">
+            <a href="#inquiry" class="inline-flex items-center justify-center p-2.5 rounded-xl bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold active:scale-95 transition" title="Inquiry Form">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             </a>
         </div>
     </div>
 
-    {{-- Minimal JavaScript for Messenger Auto-Send & Clipboard --}}
+    {{-- JavaScript for Phone Copy & Messenger Auto-Send --}}
     <script>
+        function copyPhoneNumber(number) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(number).then(() => {
+                    showCopyPhoneFeedback();
+                }).catch(() => {
+                    fallbackCopyPhone(number);
+                });
+            } else {
+                fallbackCopyPhone(number);
+            }
+        }
+
+        function fallbackCopyPhone(text) {
+            const temp = document.createElement('input');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+                document.execCommand('copy');
+                showCopyPhoneFeedback();
+            } catch (e) {}
+            document.body.removeChild(temp);
+        }
+
+        function showCopyPhoneFeedback() {
+            const btn = document.getElementById('btn-copy-phone');
+            const text = document.getElementById('copy-phone-text');
+            if (!btn || !text) return;
+            const originalText = text.textContent;
+            text.textContent = 'Copied!';
+            btn.classList.add('bg-emerald-600', 'text-white');
+            btn.classList.remove('bg-stone-200/80', 'text-stone-700');
+            setTimeout(() => {
+                text.textContent = originalText;
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('bg-stone-200/80', 'text-stone-700');
+            }, 2000);
+        }
+
         function sendViaMessenger() {
             const form = document.getElementById('inquiry-form');
             const name = document.getElementById('name').value.trim();
@@ -577,7 +646,7 @@
             document.getElementById('messenger-modal').classList.remove('hidden');
 
             // Open Messenger directly
-            const messengerUrl = '{{ $van['owner']['messenger_url'] }}';
+            const messengerUrl = '{{ $van['owner']['messages_url'] }}';
             window.open(messengerUrl, '_blank');
         }
 
