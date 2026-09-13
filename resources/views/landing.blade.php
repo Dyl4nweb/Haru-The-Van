@@ -8,7 +8,10 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('images/apple-touch-icon.png') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -29,7 +32,7 @@
                 <img 
                     src="{{ asset('images/logo.png') }}" 
                     alt="Haru The Friendly Van Logo" 
-                    class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-contain shadow-sm border border-stone-200 group-hover:scale-105 transition shrink-0 bg-stone-950"
+                    class="w-11 h-11 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition shrink-0 drop-shadow-sm"
                 >
                 <div>
                     <span class="block font-extrabold text-base sm:text-lg leading-tight text-stone-900 group-hover:text-emerald-700 transition">Haru The Friendly Van</span>
@@ -79,7 +82,7 @@
                         <img 
                             src="{{ asset('images/logo.png') }}" 
                             alt="Haru The Friendly Van Official Logo" 
-                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-xl border-2 border-white ring-2 ring-stone-900/10 object-contain hover:scale-105 transition bg-stone-950"
+                            class="w-24 h-24 sm:w-28 sm:h-28 object-contain hover:scale-105 transition drop-shadow-xl"
                         >
                     </div>
 
@@ -704,7 +707,7 @@
                 <img 
                     src="{{ asset('images/logo.png') }}" 
                     alt="Haru The Friendly Van Official Logo" 
-                    class="w-16 h-16 rounded-full object-contain shadow-sm border border-stone-200 bg-stone-950 hover:scale-105 transition"
+                    class="w-16 h-16 object-contain hover:scale-105 transition drop-shadow-sm"
                 >
             </div>
             <p class="font-bold text-stone-800 text-sm">Haru The Friendly Van</p>
