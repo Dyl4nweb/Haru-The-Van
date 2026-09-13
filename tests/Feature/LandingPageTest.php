@@ -24,6 +24,14 @@ class LandingPageTest extends TestCase
         $response->assertSee('Charls Pandeo');
         $response->assertSee('Trip Inquiry Form');
         $response->assertSee('Submit Trip Inquiry (No Login Needed)');
+        $response->assertSee('chip-btn');
+        $response->assertSee('Baguio City');
+        $response->assertSee('Tagaytay');
+        $response->assertSee('Batangas Beach');
+        $response->assertSee('Airport (NAIA)');
+        $response->assertSee('Day Tour (Balikan)');
+        $response->assertSee('11 – 14 Pax (Full)');
+        $response->assertSee('selection-summary');
         $response->assertSee('Travel Memories with Haru & Charls', false);
         $response->assertSee('Client Proof & Trip Highlights', false);
         $response->assertSee('Baguio Mountain Family Trip');

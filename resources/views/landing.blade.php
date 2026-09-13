@@ -536,8 +536,15 @@
 
                     {{-- Small Inquiry Form --}}
                     <div id="inquiry" class="md:col-span-7 bg-white rounded-2xl p-6 sm:p-7 border border-stone-200 shadow-sm">
-                        <h3 class="text-lg font-bold text-stone-900">Trip Inquiry Form</h3>
-                        <p class="text-xs text-stone-500 mt-1">Tell us when and where you want to travel. We will get back to you promptly.</p>
+                        <div class="flex items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-stone-900">Trip Inquiry Form</h3>
+                                <p class="text-xs text-stone-500 mt-0.5">Select your trip details below for a quick quotation. No payment required.</p>
+                            </div>
+                            <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                                ⚡ Fast 15-Sec Inquiry
+                            </span>
+                        </div>
 
                         @if ($errors->any())
                             <div class="mt-4 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
@@ -553,66 +560,165 @@
                         <form id="inquiry-form" action="{{ route('inquire.store') }}" method="POST" class="mt-5 space-y-4">
                             @csrf
 
+                            {{-- 1. Destination Quick-Select Chips --}}
                             <div>
-                                <label for="name" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                    Your Name <span class="text-red-500">*</span>
+                                <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
+                                    1. Choose Destination <span class="text-stone-400 font-normal normal-case">(Tap to select)</span>
                                 </label>
-                                <input 
-                                    type="text" 
-                                    name="name" 
-                                    id="name" 
-                                    required 
-                                    value="{{ old('name') }}"
-                                    placeholder="e.g. Maria Santos" 
-                                    class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
-                                >
+                                <div class="flex flex-wrap gap-2" id="destination-chips">
+                                    <button type="button" data-type="destination" data-value="Baguio City" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🏔️</span><span>Baguio City</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="Tagaytay / Cavite" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🌋</span><span>Tagaytay</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="Batangas Beaches" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🏖️</span><span>Batangas Beach</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="NAIA / Airport Transfer" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>✈️</span><span>Airport (NAIA)</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="La Union (San Juan)" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🌊</span><span>La Union (Elyu)</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="Baler, Aurora" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🏄</span><span>Baler</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="Pangasinan / Alaminos" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🏝️</span><span>Pangasinan</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="Metro Manila Tour" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>🏙️</span><span>Metro Manila Tour</span>
+                                    </button>
+                                    <button type="button" data-type="destination" data-value="Other" id="chip-dest-other" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer flex items-center gap-1.5">
+                                        <span>✏️</span><span>Other Destination</span>
+                                    </button>
+                                </div>
+
+                                {{-- Custom Destination Input if Other is clicked --}}
+                                <div id="custom-dest-wrapper" class="hidden mt-2">
+                                    <input 
+                                        type="text" 
+                                        id="custom-dest-input" 
+                                        placeholder="Type your destination (e.g. Subic, Quezon Province, Bicol, etc.)"
+                                        class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                    >
+                                </div>
                             </div>
 
+                            {{-- 2. Trip Type & Passenger Count Chips --}}
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label for="phone" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                        Contact Number <span class="text-red-500">*</span>
+                                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
+                                        2. Trip Type
                                     </label>
-                                    <input 
-                                        type="tel" 
-                                        name="phone" 
-                                        id="phone" 
-                                        inputmode="tel"
-                                        required 
-                                        value="{{ old('phone') }}"
-                                        placeholder="0917-xxx-xxxx" 
-                                        class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
-                                    >
+                                    <div class="flex flex-wrap gap-2" id="triptype-chips">
+                                        <button type="button" data-type="triptype" data-value="Day Tour (Balikan)" class="chip-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            Day Tour (Balikan)
+                                        </button>
+                                        <button type="button" data-type="triptype" data-value="Overnight (2D1N)" class="chip-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            Overnight (2D1N)
+                                        </button>
+                                        <button type="button" data-type="triptype" data-value="Multi-Day (3D2N+)" class="chip-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            Multi-Day (3D2N+)
+                                        </button>
+                                        <button type="button" data-type="triptype" data-value="One-Way Drop-off" class="chip-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            One-Way Drop
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <label for="rental_date" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                        Rental Date <span class="text-red-500">*</span>
+                                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
+                                        3. Estimated Group Size
                                     </label>
-                                    <input 
-                                        type="date" 
-                                        name="rental_date" 
-                                        id="rental_date" 
-                                        required 
-                                        min="{{ date('Y-m-d') }}"
-                                        value="{{ old('rental_date') }}"
-                                        class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
-                                    >
+                                    <div class="flex flex-wrap gap-2" id="pax-chips">
+                                        <button type="button" data-type="pax" data-value="1 – 6 Pax" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            1 – 6 Pax
+                                        </button>
+                                        <button type="button" data-type="pax" data-value="7 – 10 Pax" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            7 – 10 Pax
+                                        </button>
+                                        <button type="button" data-type="pax" data-value="11 – 14 Pax (Full Van)" class="chip-btn px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition cursor-pointer">
+                                            11 – 14 Pax (Full)
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="message" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
-                                    Message / Trip Details <span class="text-stone-400 font-normal">(Optional)</span>
-                                </label>
-                                <textarea 
-                                    name="message" 
-                                    id="message" 
-                                    rows="3" 
-                                    placeholder="Destination (e.g. Baguio, Tagaytay, Batangas), estimated passenger count, or special pickup notes..."
-                                    class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
-                                >{{ old('message') }}</textarea>
+                            {{-- Live Selected Trip Summary Badge --}}
+                            <div id="selection-summary" class="hidden p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-2">
+                                <span class="font-bold shrink-0 text-emerald-800">Trip:</span>
+                                <span id="summary-text" class="font-semibold truncate"></span>
                             </div>
+
+                            {{-- 4. Contact Details & Date --}}
+                            <div class="pt-2 border-t border-stone-100">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
+                                            Your Name <span class="text-red-500">*</span>
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            name="name" 
+                                            id="name" 
+                                            required 
+                                            value="{{ old('name') }}"
+                                            placeholder="e.g. Maria Santos" 
+                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label for="phone" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
+                                            Contact Number <span class="text-red-500">*</span>
+                                        </label>
+                                        <input 
+                                            type="tel" 
+                                            name="phone" 
+                                            id="phone" 
+                                            inputmode="tel"
+                                            required 
+                                            value="{{ old('phone') }}"
+                                            placeholder="0917-xxx-xxxx" 
+                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3.5">
+                                    <div>
+                                        <label for="rental_date" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
+                                            Rental / Travel Date <span class="text-red-500">*</span>
+                                        </label>
+                                        <input 
+                                            type="date" 
+                                            name="rental_date" 
+                                            id="rental_date" 
+                                            required 
+                                            min="{{ date('Y-m-d') }}"
+                                            value="{{ old('rental_date') }}"
+                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                        >
+                                    </div>
+
+                                    <div>
+                                        <label for="notes-input" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">
+                                            Pickup Area / Notes <span class="text-stone-400 font-normal">(Optional)</span>
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            id="notes-input" 
+                                            placeholder="e.g. Pickup in QC or flight time"
+                                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Hidden Auto-Compiled Message Field --}}
+                            <textarea name="message" id="message" class="hidden">{{ old('message') }}</textarea>
 
                             {{-- Inquiry Action Buttons --}}
                             <div class="space-y-3 pt-2">
@@ -759,8 +865,98 @@
         </div>
     </div>
 
-    {{-- JavaScript for Phone Copy & Messenger Auto-Send --}}
+    {{-- JavaScript for Phone Copy, Chips & Messenger Auto-Send --}}
     <script>
+        let selectedDestination = '';
+        let selectedTripType = '';
+        let selectedPax = '';
+
+        // Initialize Quick-Select Chips
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.chip-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const type = this.dataset.type;
+                    const val = this.dataset.value;
+
+                    // De-select siblings in same group
+                    const group = document.querySelectorAll(`.chip-btn[data-type="${type}"]`);
+                    group.forEach(b => {
+                        b.classList.remove('bg-emerald-700', 'text-white', 'border-emerald-700', 'shadow-xs');
+                        b.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+                    });
+
+                    // Highlight selected chip
+                    this.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200');
+                    this.classList.add('bg-emerald-700', 'text-white', 'border-emerald-700', 'shadow-xs');
+
+                    if (type === 'destination') {
+                        const customWrapper = document.getElementById('custom-dest-wrapper');
+                        const customInput = document.getElementById('custom-dest-input');
+                        if (val === 'Other') {
+                            customWrapper.classList.remove('hidden');
+                            customInput.focus();
+                            selectedDestination = customInput.value.trim() || 'Custom Destination';
+                        } else {
+                            customWrapper.classList.add('hidden');
+                            selectedDestination = val;
+                        }
+                    } else if (type === 'triptype') {
+                        selectedTripType = val;
+                    } else if (type === 'pax') {
+                        selectedPax = val;
+                    }
+
+                    updateMessagePayload();
+                });
+            });
+
+            // Listen to typing in custom inputs
+            const customInput = document.getElementById('custom-dest-input');
+            if (customInput) {
+                customInput.addEventListener('input', function () {
+                    selectedDestination = this.value.trim() || 'Custom Destination';
+                    updateMessagePayload();
+                });
+            }
+
+            const notesInput = document.getElementById('notes-input');
+            if (notesInput) {
+                notesInput.addEventListener('input', updateMessagePayload);
+            }
+        });
+
+        function updateMessagePayload() {
+            const parts = [];
+            if (selectedDestination) parts.push('Destination: ' + selectedDestination);
+            if (selectedTripType) parts.push('Trip Type: ' + selectedTripType);
+            if (selectedPax) parts.push('Passengers: ' + selectedPax);
+
+            const notes = document.getElementById('notes-input')?.value.trim();
+            if (notes) parts.push('Notes: ' + notes);
+
+            const messageField = document.getElementById('message');
+            if (messageField) {
+                messageField.value = parts.join(' | ');
+            }
+
+            // Update live summary
+            const summaryWrapper = document.getElementById('selection-summary');
+            const summaryText = document.getElementById('summary-text');
+            if (summaryWrapper && summaryText) {
+                const summaryParts = [];
+                if (selectedDestination) summaryParts.push(selectedDestination);
+                if (selectedTripType) summaryParts.push(selectedTripType);
+                if (selectedPax) summaryParts.push(selectedPax);
+
+                if (summaryParts.length > 0) {
+                    summaryWrapper.classList.remove('hidden');
+                    summaryText.textContent = summaryParts.join(' • ');
+                } else {
+                    summaryWrapper.classList.add('hidden');
+                }
+            }
+        }
+
         function copyPhoneNumber(number) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(number).then(() => {
@@ -817,8 +1013,11 @@
                 '• Name: ' + name,
                 '• Contact: ' + phone,
                 '• Travel Date: ' + rentalDate,
-                '• Details / Destination: ' + (message || 'To be discussed in chat')
-            ].join('\n');
+                (selectedDestination ? '• Destination: ' + selectedDestination : ''),
+                (selectedTripType ? '• Trip Type: ' + selectedTripType : ''),
+                (selectedPax ? '• Estimated Pax: ' + selectedPax : ''),
+                (message ? '• Details: ' + message : '')
+            ].filter(Boolean).join('\n');
 
             // Save to database in the background so lead is never lost
             fetch('{{ route('inquire.store') }}', {
@@ -832,7 +1031,7 @@
                     name: name,
                     phone: phone,
                     rental_date: rentalDate,
-                    message: message
+                    message: message || (selectedDestination ? 'Destination: ' + selectedDestination : 'Inquiry via Messenger')
                 })
             }).catch(() => {});
 
@@ -854,6 +1053,5 @@
             document.getElementById('messenger-modal').classList.add('hidden');
         }
     </script>
-
 </body>
 </html>
